@@ -1,749 +1,840 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="id" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Links - 3D & Futuristic UI</title>
-  
-  
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-
-  
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  
-  <style>
-    /* --- Pengaturan Tema Dasar --- */
-    :root {
-      --primary: #4f46e5;
-      --secondary: #6366f1;
-      --text: #1e293b;
-      --bg: #f1f5f9;
-      --card-bg: #ffffff;
-      --hover: #3b82f6;
-      --particle-3d-color: '#4f46e5'; 
-      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-
-    [data-theme="dark"] {
-      --primary: #6366f1;
-      --secondary: #818cf8;
-      --text: #e2e8f0;
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --hover: #93c5fd;
-      --particle-3d-color: '#818cf8';
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      color: var(--text);
-      background-color: var(--bg);
-      transition: var(--transition);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-    }
-
-    /* --- Canvas untuk Animasi 3D --- */
-    #particle-canvas-3d {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    /* --- Gaya Elemen Umum --- */
-    header {
-      padding: 2rem;
-      text-align: center;
-      animation: fadeIn 1s ease-out;
-      position: relative;
-      z-index: 1;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .profile {
-      margin: 0 auto;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 4px solid var(--primary);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      transition: var(--transition);
-    }
-
-    .profile:hover {
-      transform: scale(1.05);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .profile img { width: 100%; height: 100%; object-fit: cover; }
-
-    h1 {
-      margin-top: 1.5rem;
-      font-size: 1.8rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      display: inline-block;
-      transition: var(--transition);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uranus Studio – Pusat Kreativitas AI untuk Gamer & Content Creator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- 1. Link Google Font untuk Watermark -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     
-    [data-theme="dark"] h1 {
-      text-shadow: 0 0 10px var(--secondary), 0 0 12px var(--primary);
-    }
+    <!-- 2. Kode CSS yang Diperbarui -->
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0B061A;
+            color: #e2e8f0;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 1px 1px, rgba(124, 58, 237, 0.2) 1px, transparent 0);
+            background-size: 2rem 2rem;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #9333ea, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease-in-out;
+            border: 1px solid rgba(147, 51, 234, 0.2);
+            background: rgba(23, 16, 44, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(147, 51, 234, 0.25);
+            border-color: rgba(147, 51, 234, 0.5);
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, #9333ea, #3b82f6);
+        }
+        
+        ::selection {
+            background: rgba(147, 51, 234, 0.5);
+            color: white;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
 
-    [data-theme="dark"] .profile {
-      border-color: var(--secondary);
-      box-shadow: 0 0 20px var(--secondary), 0 0 30px var(--primary);
-    }
+        /* Scroll Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
 
-    .bio {
-      margin: 1rem auto;
-      max-width: 500px;
-      font-size: 1rem;
-      line-height: 1.6;
-      color: var(--text);
-    }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: var(--card-bg);
-      border: none;
-      color: var(--text);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      transition: var(--transition);
-      z-index: 100;
-    }
+        /* CSS untuk Watermark Futuristik */
+        :root {
+            /* Tema Gelap (Default) */
+            --glow-color: hsl(186, 100%, 50%);
+            --background-color: rgba(10, 25, 40, 0.85);
+            --border-color: rgba(127, 255, 212, 0.3);
+            --text-color: rgba(230, 255, 255, 0.95);
+            --particle-base-hue: 186; /* HSL Hue untuk partikel */
+            --particle-base-lightness: 60;
+        }
 
-    .theme-toggle:hover {
-      transform: scale(1.1);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
+        @keyframes slideUpFadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .container {
-      max-width: 600px;
-      width: 90%;
-      margin: 0 auto;
-      padding: 0 1rem 3rem;
-      position: relative;
-      z-index: 1;
-    }
+        @keyframes logo3DFlip {
+            0% { transform: rotateY(0deg); filter: brightness(1); }
+            50% { transform: rotateY(180deg); filter: brightness(2) drop-shadow(0 0 8px var(--glow-color)); }
+            100% { transform: rotateY(360deg); filter: brightness(1); }
+        }
+        
+        #futuristic-watermark {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            padding: 8px 15px;
+            min-width: 212px;
+            background: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 500;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(var(--glow-color), 0.15), 
+                        0 0 30px rgba(var(--glow-color), 0.1),
+                        inset 0 0 10px rgba(var(--glow-color), 0.1);
+            z-index: 9999;
+            cursor: pointer;
+            user-select: none;
+            overflow: hidden;
+            opacity: 0;
+            animation: slideUpFadeIn 1s ease-out 0.5s forwards;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        
+        #futuristic-watermark:hover {
+            transform: translateY(-5px) scale(1.03);
+            border-color: rgba(127, 255, 212, 0.8);
+            box-shadow: 0 0 25px rgba(var(--glow-color), 0.4), 
+                        0 0 50px rgba(var(--glow-color), 0.25),
+                        inset 0 0 12px rgba(var(--glow-color), 0.2);
+        }
 
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
+        #futuristic-watermark.light-mode {
+            --glow-color: hsl(220, 90%, 60%);
+            --background-color: rgba(245, 248, 252, 0.85);
+            --border-color: rgba(60, 100, 150, 0.3);
+            --text-color: rgba(10, 25, 40, 0.95);
+            --particle-base-hue: 220;
+            --particle-base-lightness: 40;
+        }
+        
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
 
-    .link-item {
-      background-color: var(--card-bg);
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: var(--transition);
-      text-decoration: none;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.5s forwards;
-      position: relative;
-      overflow: hidden;
-    }
+        .f-content-wrapper {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 18px;
+        }
 
-    @keyframes fadeInUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .f-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
 
-    .link-item:nth-child(1) { animation-delay: 0.2s; }
-    .link-item:nth-child(2) { animation-delay: 0.4s; }
-    .link-item:nth-child(3) { animation-delay: 0.6s; }
-    .link-item:nth-child(4) { animation-delay: 0.8s; }
-    .link-item:nth-child(5) { animation-delay: 1s; }
+        .f-content.hidden {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            transform: scale(0.9);
+        }
 
-    .link-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      background-color: var(--hover);
-      color: white;
-    }
-    
-    [data-theme="dark"] .link-item:hover {
-      box-shadow: 0 0 25px var(--hover);
-    }
+        .f-logo-container {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.4s ease;
+            flex-shrink: 0;
+        }
 
-    .link-item:hover .link-icon, .link-item:hover .link-text {
-      color: white;
-    }
+        .f-logo-container.reacting {
+            animation: logo3DFlip 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .f-logo-container svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--glow-color);
+            stroke-width: 8;
+            transition: stroke 0.5s ease;
+        }
+        
+        #f-watermark-text, #f-follow-message {
+            transition: color 0.5s ease;
+        }
 
-    .link-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 1rem;
-      color: var(--primary);
-      transition: var(--transition);
-      flex-shrink: 0;
-    }
-
-    .link-content { flex: 1; }
-    .link-title { font-weight: 600; font-size: 1.1rem; margin-bottom: 0.2rem; }
-    .link-text { font-size: 0.9rem; opacity: 0.8; }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 2rem 0;
-      flex-wrap: wrap;
-    }
-
-    .social-link {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: var(--card-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text);
-      font-size: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: var(--transition);
-      opacity: 0;
-      transform: scale(0.5);
-      animation: popIn 0.5s forwards;
-    }
-
-    @keyframes popIn {
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .social-link:nth-child(1) { animation-delay: 1.2s; }
-    .social-link:nth-child(2) { animation-delay: 1.4s; }
-    .social-link:nth-child(3) { animation-delay: 1.6s; }
-    .social-link:nth-child(4) { animation-delay: 1.8s; }
-
-    .social-link:hover {
-      transform: translateY(-5px) scale(1.1);
-      color: white;
-      background-color: var(--primary);
-    }
-    
-    [data-theme="dark"] .social-link:hover {
-      box-shadow: 0 0 20px var(--primary);
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 0;
-      font-size: 0.8rem;
-      color: var(--text);
-      opacity: 0.7;
-      position: relative;
-      z-index: 1;
-    }
-
-    @media (max-width: 768px) {
-      .profile { width: 100px; height: 100px; }
-      h1 { font-size: 1.5rem; }
-      .bio { font-size: 0.9rem; }
-      .link-icon { width: 35px; height: 35px; font-size: 0.9rem; }
-      .link-title { font-size: 1rem; }
-      .link-text { font-size: 0.8rem; }
-      .social-link { width: 45px; height: 45px; font-size: 1.3rem; }
-    }
-    
-    /* --- GAYA WATERMARK FUTURISTIK (BARU) --- */
-    #futuristic-watermark {
-        --glow-color: hsl(186, 100%, 50%);
-        --background-color: rgba(10, 25, 40, 0.85);
-        --border-color: rgba(127, 255, 212, 0.3);
-        --text-color: rgba(230, 255, 255, 0.95);
-        --particle-base-hue: 186;
-        --particle-base-lightness: 60;
-    }
-    
-    @keyframes slideUpFadeIn {
-        from { opacity: 0; transform: translateY(15px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes logo3DFlip {
-        0% { transform: rotateY(0deg); filter: brightness(1); }
-        50% { transform: rotateY(180deg); filter: brightness(2) drop-shadow(0 0 8px var(--glow-color)); }
-        100% { transform: rotateY(360deg); filter: brightness(1); }
-    }
-    
-    #futuristic-watermark {
-        position: fixed;
-        bottom: 25px;
-        left: 25px;
-        padding: 8px 15px;
-        min-width: 212px;
-        background: var(--background-color);
-        color: var(--text-color);
-        font-family: 'Roboto Mono', monospace;
-        font-weight: 500;
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-        border: 1px solid var(--border-color);
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(var(--glow-color), 0.15), 0 0 30px rgba(var(--glow-color), 0.1), inset 0 0 10px rgba(var(--glow-color), 0.1);
-        z-index: 9999;
-        cursor: pointer;
-        user-select: none;
-        overflow: hidden;
-        opacity: 0;
-        animation: slideUpFadeIn 1s ease-out 0.5s forwards;
-        transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-    
-    #futuristic-watermark:hover {
-        transform: translateY(-5px) scale(1.03);
-        border-color: rgba(127, 255, 212, 0.8);
-        box-shadow: 0 0 25px rgba(var(--glow-color), 0.4), 0 0 50px rgba(var(--glow-color), 0.25), inset 0 0 12px rgba(var(--glow-color), 0.2);
-    }
-    
-    #futuristic-watermark.light-mode {
-        --glow-color: hsl(220, 90%, 60%);
-        --background-color: rgba(245, 248, 252, 0.85);
-        --border-color: rgba(60, 100, 150, 0.3);
-        --text-color: rgba(10, 25, 40, 0.95);
-        --particle-base-hue: 220;
-        --particle-base-lightness: 40;
-    }
-    
-    #futuristic-watermark #particle-canvas {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        pointer-events: none;
-    }
-    
-    .f-content-wrapper {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 18px;
-    }
-    
-    .f-content {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-    
-    .f-content.hidden {
-        opacity: 0;
-        pointer-events: none;
-        position: absolute;
-        transform: scale(0.9);
-    }
-    
-    .f-logo-container {
-        width: 18px;
-        height: 18px;
-        transition: transform 0.4s ease;
-        flex-shrink: 0;
-    }
-    
-    .f-logo-container.reacting {
-        animation: logo3DFlip 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    
-    .f-logo-container svg {
-        width: 100%;
-        height: 100%;
-        stroke: var(--glow-color);
-        stroke-width: 8;
-        transition: stroke 0.5s ease;
-    }
-    
-    #f-watermark-text, #f-follow-message {
-        transition: color 0.5s ease;
-    }
-    
-    #f-watermark-text {
-        font-size: 12px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-    }
-    
-    #f-follow-message {
-        font-size: 11px;
-        letter-spacing: 0.2px;
-        font-weight: 700;
-        text-align: center;
-        white-space: nowrap;
-    }
-  </style>
+        #f-watermark-text {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        #f-follow-message {
+            font-size: 11px;
+            letter-spacing: 0.2px;
+            font-weight: 700;
+            text-align: center;
+            white-space: nowrap;
+        }
+    </style>
 </head>
-<body>
-  
-  <canvas id="particle-canvas-3d"></canvas>
-
-  <button class="theme-toggle" id="themeToggle">
-    <i class="fas fa-moon"></i>
-  </button>
-
-  <header>
-    <div class="profile">
-      <img src="https://i.imghippo.com/files/hkw7793vi.jpg" alt="Foto profil pribadi" onerror="this.onerror=null;this.src='https://placehold.co/120x120/4f46e5/ffffff?text=User';">
-    </div>
-    <h1>My Link Collection</h1>
-    <p class="bio">
-      Selamat datang di pusat berbagai proyek digital yang saya rancang dan kembangkan. Di sini Anda dapat menjelajahi karya-karya saya mulai dari arena permainan hingga eksplorasi kreatif dan inisiatif personal.
-    </p>
-  </header>
-
-  <div class="container">
-    <div class="links">
-      <a href="https://website-induk.vercel.app/" class="link-item" target="_blank">
-        <div class="link-icon">
-          <i class="fas fa-gamepad"></i>
-        </div>
-        <div class="link-content">
-          <div class="link-title">BY ONE SEKARANG</div>
-          <div class="link-text">Hadapi aku sekarang. Buktikan siapa yang pantas menjadi Raja dan mendapatkan hadiah</div>
-        </div>
-      </a>
-
-      <a href="https://musicfazry.vercel.app" class="link-item" target="_blank">
-        <div class="link-icon">
-          <i class="fas fa-store"></i>
-        </div>
-        <div class="link-content">
-          <div class="link-title">Uranus Studio</div>
-          <div class="link-text">Solusi digital untuk mengubah kreativitas menjadi penghasilan</div>
-        </div>
-      </a>
-
-      <a href="https://uranustify.vercel.app" class="link-item" target="_blank">
-        <div class="link-icon">
-          <i class="fas fa-music"></i>
-        </div>
-        <div class="link-content">
-          <div class="link-title">Uranustify</div>
-          <div class="link-text">Simpan & dengarkan musik favoritmu tanpa batas dimanapun dan kapanpun tanpa iklan</div>
-        </div>
-      </a>
-
-      <a href="https://wa.me/6287872521809?text=Halo%2C+saya+tertarik+dengan+aplikasi+atau+website+seperti+Uranus+Fazry.+Saya+dengar+harganya+terjangkau+dan+langsung+dari+Anda.+Boleh+info+lebih+lanjut%3F" class="link-item" target="_blank">
-        <div class="link-icon">
-          <i class="fas fa-laptop-code"></i>
-        </div>
-        <div class="link-content">
-          <div class="link-title">Uranus App & Web</div>
-          <div class="link-text">Ingin punya aplikasi atau website seperti Uranus Fazry? Dapatkan dengan harga terjangkau langsung dariku. Cepat, mudah, dan siap pakai</div>
-        </div>
-      </a>
-
-      <a href="https://mail.google.com/mail/?view=cm&to=irawanfazry697@gmail.com&su=Judul%20Email&body=Halo%20saya%20ingin%20kolaborasi" class="link-item" target="_blank">
-        <div class="link-icon">
-          <i class="fas fa-envelope"></i>
-        </div>
-        <div class="link-content">
-          <div class="link-title">Contact Me</div>
-          <div class="link-text">Get in touch for collaborations</div>
-        </div>
-      </a>
-    </div>
-
-    <div class="social-links">
-      <a href="https://www.tiktok.com/@uranusfazry?_t=ZS-8y1ncR7XOi1&_r=1" class="social-link" target="_blank">
-        <i class="fab fa-tiktok"></i>
-      </a>
-      <a href="https://youtube.com/@uranusfazry?si=pbliTKOKTkiCcxvu" class="social-link" target="_blank">
-        <i class="fab fa-youtube"></i>
-      </a>
-      <a href="https://www.instagram.com/kingbewan?igsh=NHlyNnRzZ21wZjBi" class="social-link" target="_blank">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.facebook.com/share/1AfJHVfSY6/" class="social-link" target="_blank">
-        <i class="fab fa-facebook"></i>
-      </a>
-    </div>
-  </div>
-
-  <footer>
-    © 2025 Created by Uranus Fazry | All Rights Reserved
-  </footer>
-
-  <script>
-    // --- Skrip Animasi Partikel 3D dengan Three.js ---
-    let scene, camera, renderer, particles3D;
-    let mouseX = 0, mouseY = 0;
-    const windowHalfX = window.innerWidth / 2;
-    const windowHalfY = window.innerHeight / 2;
-
-    function getParticleColor() {
-      const colorString = getComputedStyle(document.documentElement).getPropertyValue('--particle-3d-color').trim();
-      return colorString.replace(/'/g, '');
-    }
-
-    function init3D() {
-      scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-      camera.position.z = 1000;
-
-      const particleColor = getParticleColor();
-      const material = new THREE.PointsMaterial({
-        color: new THREE.Color(particleColor),
-        size: 2,
-        blending: THREE.AdditiveBlending,
-        transparent: true,
-        sizeAttenuation: true
-      });
-
-      const geometry = new THREE.BufferGeometry();
-      const vertices = [];
-      const particleCount = 5000;
-      for (let i = 0; i < particleCount; i++) {
-        const x = Math.random() * 2000 - 1000;
-        const y = Math.random() * 2000 - 1000;
-        const z = Math.random() * 2000 - 1000;
-        vertices.push(x, y, z);
-      }
-      geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-      
-      particles3D = new THREE.Points(geometry, material);
-      scene.add(particles3D);
-
-      const canvas = document.getElementById('particle-canvas-3d');
-      renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
-      renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(window.innerWidth, window.innerHeight);
-
-      document.addEventListener('mousemove', onDocumentMouseMove, false);
-      window.addEventListener('resize', onWindowResize, false);
-    }
-
-    function onWindowResize() {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-
-    function onDocumentMouseMove(event) {
-      mouseX = event.clientX - windowHalfX;
-      mouseY = event.clientY - windowHalfY;
-    }
-
-    function animate3D() {
-      requestAnimationFrame(animate3D);
-      const time = Date.now() * 0.00005;
-      camera.position.x += (mouseX - camera.position.x) * 0.05;
-      camera.position.y += (-mouseY - camera.position.y) * 0.05;
-      camera.lookAt(scene.position);
-      particles3D.rotation.x = time * 0.2;
-      particles3D.rotation.y = time * 0.4;
-      renderer.render(scene, camera);
-    }
-    
-    function updateParticleColor() {
-        if (particles3D) {
-            const newColor = getParticleColor();
-            particles3D.material.color.set(newColor);
-        }
-    }
-
-    // --- Skrip Tombol Tema ---
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = themeToggle.querySelector('i');
-    
-    themeToggle.addEventListener('click', () => {
-      const html = document.documentElement;
-      const isLight = html.getAttribute('data-theme') === 'light';
-      
-      if (isLight) {
-        html.setAttribute('data-theme', 'dark');
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
-      } else {
-        html.setAttribute('data-theme', 'light');
-        themeIcon.classList.replace('fa-sun', 'fa-moon');
-      }
-      updateParticleColor();
-    });
-    
-    init3D();
-    animate3D();
-  </script>
-
-  
-
-<script>
-  (function() {
-    function initializeWatermark() {
-        const watermarkHTML = `
-          <div id="futuristic-watermark" title="Design by ©URANUSFAZRY">
-            <canvas id="particle-canvas"></canvas>
-            <div class="f-content-wrapper">
-              <div id="f-main-content" class="f-content">
-                <div class="f-logo-container">
-                  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M20 20 L80 20 L80 80 L20 80 Z" stroke-opacity="0.5"/>
-                      <path d="M50 5 L95 50 L50 95 L5 50 Z"/>
-                  </svg>
+<body class="antialiased">
+    <!-- Navbar -->
+    <nav class="bg-black/30 backdrop-blur-lg fixed w-full z-50 border-b border-purple-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center gap-2">
+                        <i class="fa-solid fa-meteor text-purple-400 text-2xl"></i>
+                        <span class="text-2xl font-bold gradient-text">URANUS STUDIO</span>
+                    </div>
                 </div>
-                <span id="f-watermark-text">©URANUSFAZRY</span>
-              </div>
-              <div id="f-follow-content" class="f-content hidden">
-                  <span id="f-follow-message"></span>
-              </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#beranda" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">Beranda</a>
+                        <a href="#layanan" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">Layanan</a>
+                        <a href="#galeri" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">Galeri</a>
+                        <a href="#tools" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">Tools</a>
+                        <a href="#testimoni" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">Testimoni</a>
+                        <a href="#faq" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">FAQ</a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button class="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:opacity-90 transition shadow-lg shadow-purple-500/20">Masuk/Daftar</button>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none">
+                        <span class="sr-only">Buka menu utama</span>
+                        <i id="mobile-menu-icon" class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
-          </div>
-        `;
-        document.body.insertAdjacentHTML('beforeend', watermarkHTML);
-
-        const watermarkEl = document.getElementById('futuristic-watermark');
-        const textEl = document.getElementById('f-watermark-text');
-        const logoEl = watermarkEl.querySelector('.f-logo-container');
-        const mainContentEl = document.getElementById('f-main-content');
-        const followContentEl = document.getElementById('f-follow-content');
-        const followMessageEl = document.getElementById('f-follow-message');
+        </div>
         
-        let isAnimating = false;
-        let autoPlayInterval = null;
-        let currentSequence = 0;
-        const sequenceActions = ['scramble', 'logo', 'youtube', 'tiktok', 'reset'];
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#beranda" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Beranda</a>
+                <a href="#layanan" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Layanan</a>
+                <a href="#galeri" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Galeri</a>
+                <a href="#tools" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Tools</a>
+                <a href="#testimoni" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Testimoni</a>
+                <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">FAQ</a>
+                <button class="w-full text-left bg-gradient-to-r from-purple-600 to-blue-500 text-white px-3 py-2 rounded-md text-base font-medium mt-2 hover:opacity-90 transition">Masuk/Daftar</button>
+            </div>
+        </div>
+    </nav>
 
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        const resizeCanvas = () => { if (watermarkEl) { canvas.width = watermarkEl.offsetWidth; canvas.height = watermarkEl.offsetHeight; } };
-        class Particle {
-            constructor() { this.reset(); this.baseSpeedX = (Math.random() - 0.5) * 0.5; this.baseSpeedY = (Math.random() - 0.5) * 0.5; this.speedX = this.baseSpeedX; this.speedY = this.baseSpeedY; }
-            update() {
-                this.x += this.speedX; this.y += this.speedY; this.opacity -= this.fadeSpeed;
-                if (this.opacity <= 0 || this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) { this.reset(); }
+    <main>
+        <!-- Konten halaman Anda ada di sini -->
+        <!-- Hero Section -->
+        <section id="beranda" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen flex items-center">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 reveal">
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-white">
+                        <span class="gradient-text">Buka Potensi Kreativitas</span> Tanpa Batas dengan AI
+                    </h1>
+                    <p class="text-lg text-gray-300 mb-8 max-w-xl">
+                        Platform all-in-one untuk kreator konten, streamer, dan pecinta game & anime. Ciptakan visual 4K, ide viral, dan optimalkan channel Anda di satu tempat.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-transform hover:scale-105 shadow-lg shadow-purple-500/30">Mulai Sekarang Gratis</button>
+                        <button class="bg-white/10 text-white px-8 py-3 rounded-lg font-medium hover:bg-white/20 transition-transform hover:scale-105">
+                            Lihat Demo <i class="fas fa-play-circle ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 relative mt-10 lg:mt-0 animate-float">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5aacfc95-8910-43f1-acd9-4f8e0c788cbb.png" alt="Ilustrasi digital futuristik seorang kreator konten sedang bekerja dengan antarmuka hologram AI dan berbagai tools kreatif yang mengambang di sekitarnya." class="rounded-2xl shadow-2xl shadow-purple-500/10" />
+                    <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-purple-800 rounded-full opacity-30 blur-2xl"></div>
+                    <div class="absolute -top-12 -right-8 w-40 h-40 bg-blue-600 rounded-full opacity-30 blur-2xl"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partner Logos -->
+        <section class="py-12 bg-black/20 reveal">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-gray-400 mb-8 font-medium">Dipercaya oleh kreator dari berbagai platform ternama</p>
+                <div class="flex justify-center items-center gap-8 md:gap-16 flex-wrap">
+                    <i class="fab fa-youtube text-4xl text-gray-500 hover:text-white transition-colors" title="YouTube"></i>
+                    <i class="fab fa-twitch text-4xl text-gray-500 hover:text-purple-400 transition-colors" title="Twitch"></i>
+                    <i class="fab fa-tiktok text-4xl text-gray-500 hover:text-white transition-colors" title="TikTok"></i>
+                    <i class="fab fa-instagram text-4xl text-gray-500 hover:text-pink-500 transition-colors" title="Instagram"></i>
+                    <i class="fab fa-discord text-4xl text-gray-500 hover:text-indigo-400 transition-colors" title="Discord"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Layanan Section -->
+        <section id="layanan" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Layanan <span class="gradient-text">Unggulan</span> Kami</h2>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                    Solusi lengkap untuk semua kebutuhan kreatif Anda dengan dukungan teknologi AI terkini yang super canggih.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Layanan 1 -->
+                <div class="card-hover rounded-2xl p-8 reveal">
+                    <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-purple-500/30">
+                        <i class="fa-solid fa-wand-magic-sparkles text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Generator Gambar AI 4K</h3>
+                    <p class="text-gray-300 mb-6">
+                        Ciptakan karakter, latar belakang, dan aset visual original dari teks. Hasilkan gambar 4K yang siap pakai untuk thumbnail atau cover.
+                    </p>
+                    <a href="#" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors">Coba Sekarang <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Layanan 2 -->
+                <div class="card-hover rounded-2xl p-8 reveal" style="transition-delay: 200ms;">
+                    <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30">
+                        <i class="fa-solid fa-magnifying-glass-chart text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Analisis YouTube Otomatis</h3>
+                    <p class="text-gray-300 mb-6">
+                        Optimalkan thumbnail, judul, deskripsi, dan hashtag video Anda dengan analisis AI untuk jangkauan maksimal.
+                    </p>
+                    <a href="#" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors">Pelajari Lebih Lanjut <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Layanan 3 -->
+                <div class="card-hover rounded-2xl p-8 reveal" style="transition-delay: 400ms;">
+                    <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-purple-500/30">
+                        <i class="fa-solid fa-comments text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Ide Kata-Kata Viral</h3>
+                    <p class="text-gray-300 mb-6">
+                        Gunakan AI kami untuk menghasilkan kata-kata yang catchy, lucu, atau inspiratif sesuai niche dan gaya bahasa Anda.
+                    </p>
+                    <a href="#" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors">Dapatkan Ide <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Gallery Section -->
+        <section id="galeri" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Galeri <span class="gradient-text">Fitur</span> Kami</h2>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                    Lihat lebih dekat bagaimana tools kami dapat mengubah ide Anda menjadi kenyataan.
+                </p>
+                <p class="text-sm text-gray-400 mt-4">Jika gambar tidak muncul, <a href="https://photos.app.goo.gl/Yh29bgC2goYPGZrm7" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:underline">klik di sini untuk melihat</a>.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Gambar 1 -->
+                <div class="card-hover rounded-2xl p-6 reveal">
+                    <img src="https://i.imghippo.com/files/gjn6259zIc.jpg" alt="Halaman login Uranus Studio" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                    <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
+                    <h3 class="text-lg font-bold text-white text-center">Halaman Login Uranus Studio</h3>
+                </div>
+                <!-- Gambar 2 -->
+                <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 100ms;">
+                    <img src="https://i.imghippo.com/files/CmEC4197hg.png" alt="Analisis Gambar dan pembuatan karakter" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                    <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
+                    <h3 class="text-lg font-bold text-white text-center">Analisis & Kreasi Aset (Bagian 1)</h3>
+                </div>
+                <!-- Gambar 3 -->
+                <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 200ms;">
+                    <img src="https://i.imghippo.com/files/BRXE1989k.png" alt="Detail Adegan Anime dan Video" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                    <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
+                    <h3 class="text-lg font-bold text-white text-center">Analisis & Kreasi Aset (Bagian 2)</h3>
+                </div>
+                 <!-- Gambar 4 -->
+                <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 300ms;">
+                    <img src="https://i.imghippo.com/files/on1730YDQ.jpg" alt="Generator Mentahan Gambar" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                    <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
+                    <h3 class="text-lg font-bold text-white text-center">Generator Mentahan Gambar</h3>
+                </div>
+                <!-- Gambar 5 -->
+                <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 400ms;">
+                    <img src="https://i.imghippo.com/files/qoK4769xmM.jpg" alt="Generator Hashtag Viral" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                    <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
+                    <h3 class="text-lg font-bold text-white text-center">Generator Hashtag Viral</h3>
+                </div>
+                <!-- Gambar 6 -->
+                <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 500ms;">
+                    <img src="https://i.imghippo.com/files/CnH1204o.jpg" alt="Generator Kata Kata Viral" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                    <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
+                    <h3 class="text-lg font-bold text-white text-center">Generator Kata-Kata Viral</h3>
+                </div>
+                <!-- Gambar 7 -->
+                <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 600ms;">
+                    <img src="https://i.imghippo.com/files/RvDz4646Ic.jpg" alt="Analisis Video Lengkap" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                    <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
+                    <h3 class="text-lg font-bold text-white text-center">Analisis Video Lengkap</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools Section -->
+        <section id="tools" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Fokus pada Dunia <span class="gradient-text">Gaming & Anime</span></h2>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                    Tools yang dirancang khusus untuk kebutuhan kreator di dunia game dan anime.
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2 reveal">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d8c4cb72-dc9a-4e2d-9144-d80534d48d78.png" alt="Antarmuka dashboard Uranus Studio yang modern dan gelap, menunjukkan berbagai tools analisis dan statistik konten dengan desain minimalis dan futuristik." class="rounded-2xl shadow-xl shadow-blue-500/10" />
+                </div>
+                <div class="lg:w-1/2 reveal" style="transition-delay: 200ms;">
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 mt-1 feature-icon w-10 h-10 rounded-lg flex items-center justify-center shadow-lg shadow-purple-500/30">
+                                <i class="fa-solid fa-gamepad text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Dukungan Game Populer</h4>
+                                <p class="text-gray-300 mt-1">Dukungan khusus untuk Mobile Legends, Valorant, Genshin Impact, Magic Chess, dan lainnya.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 mt-1 feature-icon w-10 h-10 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/30">
+                                <i class="fa-solid fa-pen-nib text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Prompt Anime Super Detail</h4>
+                                <p class="text-gray-300 mt-1">Ciptakan dunia anime Anda dengan detail adegan, emosi, gaya visual, dan pencahayaan sinematik.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 mt-1 feature-icon w-10 h-10 rounded-lg flex items-center justify-center shadow-lg shadow-purple-500/30">
+                                <i class="fa-solid fa-bolt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Alur Kerja Cepat & Praktis</h4>
+                                <p class="text-gray-300 mt-1">Navigasi mudah dan alur kerja langkah-demi-langkah membuat semua fitur canggih terasa menyenangkan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimoni -->
+        <section id="testimoni" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Dipercaya oleh <span class="gradient-text">Kreator Top</span></h2>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                    Ribuan kreator telah menggunakan Uranus Studio untuk meningkatkan kualitas konten mereka secara drastis.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testi 1 -->
+                <div class="card-hover rounded-2xl p-8 reveal">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/65048ba3-67d5-4aa7-97ee-320b7a36c346.png" alt="Potret kreator konten game dengan rambut pirang dan kacamata, tersenyum." class="w-14 h-14 rounded-full object-cover border-2 border-purple-400" />
+                        <div class="ml-4">
+                            <h4 class="font-bold text-white">Andi Pratama</h4>
+                            <span class="text-sm text-purple-300">Kreator Konten Game</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "Karakter AI dari Uranus Studio memberi identitas unik untuk channel YouTube saya. Sekarang saya bisa fokus pada konten tanpa pusing desain karakter!"
+                    </p>
+                    <div class="mt-4 flex text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                </div>
+                
+                <!-- Testi 2 -->
+                <div class="card-hover rounded-2xl p-8 reveal" style="transition-delay: 200ms;">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/48134a22-eb3f-4670-bd16-1d2d6874a289.png" alt="Potret wanita kreator kecantikan dengan riasan natural dan rambut hitam panjang." class="w-14 h-14 rounded-full object-cover border-2 border-purple-400" />
+                        <div class="ml-4">
+                            <h4 class="font-bold text-white">Siti Rahayu</h4>
+                            <span class="text-sm text-purple-300">Animator & Seniman</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "Generator prompt anime-nya luar biasa! Sangat detail dan membantu saya mengatasi 'artist block'. Hasil AI art saya jadi lebih hidup dan sinematik."
+                    </p>
+                    <div class="mt-4 flex text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                </div>
+                
+                <!-- Testi 3 -->
+                <div class="card-hover rounded-2xl p-8 reveal" style="transition-delay: 400ms;">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/64416a73-3494-4ce5-b7c9-64dddce13b91.png" alt="Potret pria berambut pendek dengan kumis tipis, pemilik bisnis digital." class="w-14 h-14 rounded-full object-cover border-2 border-purple-400" />
+                        <div class="ml-4">
+                            <div class="font-bold text-white">Budi Santoso</div>
+                            <span class="text-sm text-purple-300">Agency Digital</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "Tools analisisnya sangat membantu tim kami. Kami bisa memberikan data dan rekomendasi yang lebih tajam kepada klien-klien kreator kami."
+                    </p>
+                    <div class="mt-4 flex text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="bg-gradient-to-r from-purple-600 to-blue-500 rounded-3xl p-8 md:p-16 relative overflow-hidden reveal">
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full opacity-50 blur-3xl"></div>
+                <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-white/10 rounded-full opacity-50 blur-3xl"></div>
+                
+                <div class="relative z-10 text-center">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Buat. Analisis. Dominasi.</h2>
+                    <p class="text-lg text-blue-100 mb-8 max-w-3xl mx-auto">
+                        Bergabunglah dengan ribuan kreator lainnya dan rasakan kemudahan membuat konten berkualitas tinggi dengan Uranus Studio.
+                    </p>
+                    <button class="bg-white text-gray-900 px-8 py-4 rounded-lg font-bold hover:bg-opacity-90 transition-transform hover:scale-105 shadow-2xl">Daftar Sekarang & Dapatkan Kredit Gratis</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Pertanyaan <span class="gradient-text">Yang Sering Diajukan</span></h2>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                    Temukan jawaban untuk pertanyaan umum tentang layanan dan fitur di Uranus Studio.
+                </p>
+            </div>
+            
+            <div class="space-y-4 reveal">
+                <!-- FAQ Item 1 -->
+                <div class="card-hover rounded-xl transition-all duration-200">
+                    <button class="faq-toggle flex justify-between items-center w-full text-left p-6">
+                        <h3 class="text-lg font-medium text-white">Bagaimana cara mulai menggunakan Uranus Studio?</h3>
+                        <i class="fas fa-chevron-down text-purple-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-6 pb-6 text-gray-300">Anda bisa langsung mendaftar akun gratis dan mulai menjelajahi semua fitur dasar kami. Untuk fitur premium dan kredit tambahan, Anda bisa berlangganan paket yang tersedia dengan harga yang sangat terjangkau.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="card-hover rounded-xl transition-all duration-200">
+                    <button class="faq-toggle flex justify-between items-center w-full text-left p-6">
+                        <h3 class="text-lg font-medium text-white">Apakah saya memiliki hak cipta dari gambar AI yang dibuat?</h3>
+                        <i class="fas fa-chevron-down text-purple-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-6 pb-6 text-gray-300">Ya, semua gambar dan aset yang Anda hasilkan melalui Uranus Studio sepenuhnya menjadi milik Anda (lisensi komersial penuh) dan bisa digunakan untuk proyek apa pun tanpa batasan.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="card-hover rounded-xl transition-all duration-200">
+                    <button class="faq-toggle flex justify-between items-center w-full text-left p-6">
+                        <h3 class="text-lg font-medium text-white">Bagaimana sistem kredit untuk generasi gambar bekerja?</h3>
+                        <i class="fas fa-chevron-down text-purple-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-6 pb-6 text-gray-300">Setiap akun baru mendapatkan 50 kredit gratis. 1 kredit digunakan untuk 1 gambar standar. Gambar dengan resolusi tinggi atau fitur lanjutan mungkin menggunakan lebih banyak kredit. Kredit bisa dibeli secara terpisah atau didapatkan melalui paket langganan bulanan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-black/20 border-t border-purple-500/20 mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <div class="col-span-2 lg:col-span-1">
+                    <h3 class="text-lg font-semibold text-white mb-4">Uranus Studio</h3>
+                    <p class="text-gray-400 text-sm">Platform kreatif untuk era digital.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-red-500 transition-colors"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-base font-semibold text-white mb-4">Layanan</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#layanan" class="text-gray-400 hover:text-white text-sm transition-colors">Gambar AI 4K</a></li>
+                        <li><a href="#layanan" class="text-gray-400 hover:text-white text-sm transition-colors">Analisis YouTube</a></li>
+                        <li><a href="#layanan" class="text-gray-400 hover:text-white text-sm transition-colors">Ide Kata Viral</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-base font-semibold text-white mb-4">Tools</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#tools" class="text-gray-400 hover:text-white text-sm transition-colors">Dukungan Game</a></li>
+                        <li><a href="#tools" class="text-gray-400 hover:text-white text-sm transition-colors">Prompt Anime</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Semua Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-base font-semibold text-white mb-4">Perusahaan</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Tentang Kami</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Karir</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-base font-semibold text-white mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                         <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Lisensi</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-purple-500/20 text-center text-gray-500 text-sm">
+                <p>&copy; <span id="copyright-year"></span> Uranus Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                // Toggle icon between bars and times (X)
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenuIcon.classList.remove('fa-times');
+                    mobileMenuIcon.classList.add('fa-bars');
+                } else {
+                    mobileMenuIcon.classList.remove('fa-bars');
+                    mobileMenuIcon.classList.add('fa-times');
+                }
+            });
+
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuIcon.classList.remove('fa-times');
+                    mobileMenuIcon.classList.add('fa-bars');
+                });
+            });
+
+            // --- FAQ Accordion ---
+            const faqToggles = document.querySelectorAll('.faq-toggle');
+            faqToggles.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+
+                    // Close other open FAQs
+                    faqToggles.forEach(otherButton => {
+                        if (otherButton !== button) {
+                            otherButton.nextElementSibling.style.maxHeight = null;
+                            otherButton.querySelector('i').classList.remove('rotate-180');
+                        }
+                    });
+
+                    // Toggle current FAQ
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null; // Close it
+                        icon.classList.remove('rotate-180');
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px"; // Open it
+                        icon.classList.add('rotate-180');
+                    }
+                });
+            });
+
+            // --- Dynamic Copyright Year ---
+            document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+            // --- Reveal on Scroll Animation ---
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Optional: unobserve after revealing to save resources
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+    
+    <!-- 3. Kode JavaScript untuk Watermark -->
+    <script>
+      (function() {
+        function initializeWatermark() {
+            const watermarkHTML = `
+              <div id="futuristic-watermark" title="Design by ©URANUSFAZRY">
+                <canvas id="particle-canvas"></canvas>
+                <div class="f-content-wrapper">
+                  <div id="f-main-content" class="f-content">
+                    <div class="f-logo-container">
+                      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M20 20 L80 20 L80 80 L20 80 Z" stroke-opacity="0.5"/>
+                          <path d="M50 5 L95 50 L50 95 L5 50 Z"/>
+                      </svg>
+                    </div>
+                    <span id="f-watermark-text">©URANUSFAZRY</span>
+                  </div>
+                  <div id="f-follow-content" class="f-content hidden">
+                      <span id="f-follow-message"></span>
+                  </div>
+                </div>
+              </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', watermarkHTML);
+
+            const watermarkEl = document.getElementById('futuristic-watermark');
+            const textEl = document.getElementById('f-watermark-text');
+            const logoEl = watermarkEl.querySelector('.f-logo-container');
+            const mainContentEl = document.getElementById('f-main-content');
+            const followContentEl = document.getElementById('f-follow-content');
+            const followMessageEl = document.getElementById('f-follow-message');
+            
+            let isAnimating = false;
+            let autoPlayInterval = null;
+            let currentSequence = 0;
+            const sequenceActions = ['scramble', 'logo', 'youtube', 'tiktok', 'reset'];
+
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const resizeCanvas = () => { if (watermarkEl) { canvas.width = watermarkEl.offsetWidth; canvas.height = watermarkEl.offsetHeight; } };
+            class Particle {
+                constructor() { this.reset(); this.baseSpeedX = (Math.random() - 0.5) * 0.5; this.baseSpeedY = (Math.random() - 0.5) * 0.5; this.speedX = this.baseSpeedX; this.speedY = this.baseSpeedY; }
+                update() {
+                    this.x += this.speedX; this.y += this.speedY; this.opacity -= this.fadeSpeed;
+                    if (this.opacity <= 0 || this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) { this.reset(); }
+                }
+                draw() {
+                    const style = getComputedStyle(watermarkEl);
+                    const hue = style.getPropertyValue('--particle-base-hue').trim();
+                    const lightness = parseFloat(style.getPropertyValue('--particle-base-lightness').trim());
+                    ctx.globalAlpha = this.opacity;
+                    ctx.fillStyle = `hsl(${hue}, 100%, ${lightness + this.opacity * 40}%)`;
+                    ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+                }
+                reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.opacity = Math.random() * 0.5 + 0.2; this.size = Math.random() * 1.5 + 0.5; this.fadeSpeed = Math.random() * 0.015 + 0.005; }
             }
-            draw() {
-                const style = getComputedStyle(watermarkEl);
-                const hue = style.getPropertyValue('--particle-base-hue').trim();
-                const lightness = parseFloat(style.getPropertyValue('--particle-base-lightness').trim());
-                ctx.globalAlpha = this.opacity;
-                ctx.fillStyle = `hsl(${hue}, 100%, ${lightness + this.opacity * 40}%)`;
-                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
-            }
-            reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.opacity = Math.random() * 0.5 + 0.2; this.size = Math.random() * 1.5 + 0.5; this.fadeSpeed = Math.random() * 0.015 + 0.005; }
+            const animateParticles = () => { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); ctx.globalAlpha = 1.0; requestAnimationFrame(animateParticles); };
+            
+            const textScramble = (el) => {
+                const originalText = "©URANUSFAZRY";
+                const chars = '!<>*#{}[]'; let frame = 0; isAnimating = true;
+                const interval = setInterval(() => {
+                    el.innerText = originalText.split('').map((char, i) => { const p = (frame - i * 2) / 15; if (p < 0) return ' '; if (p > 1) return char; return chars[Math.floor(Math.random() * chars.length)]; }).join('');
+                    if (frame >= originalText.length * 2 + 15) { clearInterval(interval); el.innerText = originalText; isAnimating = false; } frame++;
+                }, 30);
+            };
+
+            const typewriter = (el, text) => {
+                let i = 0; el.innerHTML = ""; isAnimating = true;
+                const interval = setInterval(() => {
+                    if (i < text.length) { el.innerHTML += text.charAt(i); i++; } 
+                    else { clearInterval(interval); isAnimating = false; }
+                }, 50);
+            };
+
+            const runAutoSequence = () => {
+                if (isAnimating) return;
+                const action = sequenceActions[currentSequence];
+                switch (action) {
+                    case 'scramble': textScramble(textEl); break;
+                    case 'logo':
+                        isAnimating = true;
+                        logoEl.classList.add('reacting');
+                        logoEl.addEventListener('animationend', () => { logoEl.classList.remove('reacting'); isAnimating = false; }, { once: true });
+                        break;
+                    case 'youtube':
+                        isAnimating = true;
+                        mainContentEl.classList.add('hidden');
+                        setTimeout(() => {
+                            followContentEl.classList.remove('hidden');
+                            typewriter(followMessageEl, "Follow uranusfazry YouTube");
+                        }, 400);
+                        break;
+                    case 'tiktok': 
+                        typewriter(followMessageEl, "Follow uranusfazry TikTok"); 
+                        break;
+                    case 'reset':
+                        isAnimating = true;
+                        followContentEl.classList.add('hidden');
+                        setTimeout(() => {
+                            mainContentEl.classList.remove('hidden');
+                            isAnimating = false;
+                        }, 400);
+                        break;
+                }
+                currentSequence = (currentSequence + 1) % sequenceActions.length;
+            };
+
+            const startAutoPlay = () => {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+                runAutoSequence();
+                autoPlayInterval = setInterval(runAutoSequence, 3500);
+            };
+
+            watermarkEl.addEventListener('click', () => { watermarkEl.classList.toggle('light-mode'); });
+            
+            const init = () => {
+                resizeCanvas();
+                for (let i = 0; i < 40; i++) particles.push(new Particle());
+                animateParticles();
+                window.addEventListener('resize', resizeCanvas);
+                startAutoPlay();
+            };
+            init();
         }
-        const animateParticles = () => { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); ctx.globalAlpha = 1.0; requestAnimationFrame(animateParticles); };
-        
-        const textScramble = (el) => {
-            const originalText = "©URANUSFAZRY";
-            const chars = '!<>*#{}[]'; let frame = 0; isAnimating = true;
-            const interval = setInterval(() => {
-                el.innerText = originalText.split('').map((char, i) => { const p = (frame - i * 2) / 15; if (p < 0) return ' '; if (p > 1) return char; return chars[Math.floor(Math.random() * chars.length)]; }).join('');
-                if (frame >= originalText.length * 2 + 15) { clearInterval(interval); el.innerText = originalText; isAnimating = false; } frame++;
-            }, 30);
-        };
 
-        const typewriter = (el, text) => {
-            let i = 0; el.innerHTML = ""; isAnimating = true;
-            const interval = setInterval(() => {
-                if (i < text.length) { el.innerHTML += text.charAt(i); i++; } 
-                else { clearInterval(interval); isAnimating = false; }
-            }, 50);
-        };
-
-        const runAutoSequence = () => {
-            if (isAnimating) return;
-            const action = sequenceActions[currentSequence];
-            switch (action) {
-                case 'scramble': textScramble(textEl); break;
-                case 'logo':
-                    isAnimating = true;
-                    logoEl.classList.add('reacting');
-                    logoEl.addEventListener('animationend', () => { logoEl.classList.remove('reacting'); isAnimating = false; }, { once: true });
-                    break;
-                case 'youtube':
-                    isAnimating = true;
-                    mainContentEl.classList.add('hidden');
-                    setTimeout(() => {
-                        followContentEl.classList.remove('hidden');
-                        typewriter(followMessageEl, "Follow uranusfazry YouTube");
-                    }, 400);
-                    break;
-                case 'tiktok': 
-                    typewriter(followMessageEl, "Follow uranusfazry TikTok"); 
-                    break;
-                case 'reset':
-                    isAnimating = true;
-                    followContentEl.classList.add('hidden');
-                    setTimeout(() => {
-                        mainContentEl.classList.remove('hidden');
-                        isAnimating = false;
-                    }, 400);
-                    break;
-            }
-            currentSequence = (currentSequence + 1) % sequenceActions.length;
-        };
-
-        const startAutoPlay = () => {
-            if (autoPlayInterval) clearInterval(autoPlayInterval);
-            runAutoSequence();
-            autoPlayInterval = setInterval(runAutoSequence, 3500);
-        };
-
-        watermarkEl.addEventListener('click', () => { watermarkEl.classList.toggle('light-mode'); });
-        
-        const init = () => {
-            resizeCanvas();
-            for (let i = 0; i < 40; i++) particles.push(new Particle());
-            animateParticles();
-            window.addEventListener('resize', resizeCanvas);
-            startAutoPlay();
-        };
-        init();
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeWatermark);
-    } else {
-        initializeWatermark();
-    }
-  })();
-  </script>
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeWatermark);
+        } else {
+            initializeWatermark();
+        }
+      })();
+    </script>
 </body>
 </html>
