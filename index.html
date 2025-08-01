@@ -9,10 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- 1. Link Google Font untuk Watermark -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- 2. Kode CSS yang Diperbarui -->
     <style>
         /* Custom Styles */
         body {
@@ -211,7 +209,6 @@
     </style>
 </head>
 <body class="antialiased">
-    <!-- Navbar -->
     <nav class="bg-black/30 backdrop-blur-lg fixed w-full z-50 border-b border-purple-500/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -231,11 +228,7 @@
                         <a href="#faq" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">FAQ</a>
                     </div>
                 </div>
-                <div class="hidden md:block">
-                    <div class="ml-4 flex items-center md:ml-6">
-                        <button class="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:opacity-90 transition shadow-lg shadow-purple-500/20">Masuk/Daftar</button>
-                    </div>
-                </div>
+                
                 <div class="-mr-2 flex md:hidden">
                     <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none">
                         <span class="sr-only">Buka menu utama</span>
@@ -245,7 +238,6 @@
             </div>
         </div>
         
-        <!-- Mobile menu -->
         <div class="md:hidden hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#beranda" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Beranda</a>
@@ -254,14 +246,11 @@
                 <a href="#tools" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Tools</a>
                 <a href="#testimoni" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Testimoni</a>
                 <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">FAQ</a>
-                <button class="w-full text-left bg-gradient-to-r from-purple-600 to-blue-500 text-white px-3 py-2 rounded-md text-base font-medium mt-2 hover:opacity-90 transition">Masuk/Daftar</button>
-            </div>
+                </div>
         </div>
     </nav>
 
     <main>
-        <!-- Konten halaman Anda ada di sini -->
-        <!-- Hero Section -->
         <section id="beranda" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen flex items-center">
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="lg:w-1/2 reveal">
@@ -272,10 +261,7 @@
                         Platform all-in-one untuk kreator konten, streamer, dan pecinta game & anime. Ciptakan visual 4K, ide viral, dan optimalkan channel Anda di satu tempat.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-transform hover:scale-105 shadow-lg shadow-purple-500/30">Mulai Sekarang Gratis</button>
-                        <button class="bg-white/10 text-white px-8 py-3 rounded-lg font-medium hover:bg-white/20 transition-transform hover:scale-105">
-                            Lihat Demo <i class="fas fa-play-circle ml-2"></i>
-                        </button>
+                        <a href="#cta-section" class="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-transform hover:scale-105 shadow-lg shadow-purple-500/30 text-center">Beli Sekarang</a>
                     </div>
                 </div>
                 <div class="lg:w-1/2 relative mt-10 lg:mt-0 animate-float">
@@ -286,7 +272,6 @@
             </div>
         </section>
 
-        <!-- Partner Logos -->
         <section class="py-12 bg-black/20 reveal">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <p class="text-center text-gray-400 mb-8 font-medium">Dipercaya oleh kreator dari berbagai platform ternama</p>
@@ -300,7 +285,6 @@
             </div>
         </section>
 
-        <!-- Layanan Section -->
         <section id="layanan" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Layanan <span class="gradient-text">Unggulan</span> Kami</h2>
@@ -310,7 +294,6 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Layanan 1 -->
                 <div class="card-hover rounded-2xl p-8 reveal">
                     <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-purple-500/30">
                         <i class="fa-solid fa-wand-magic-sparkles text-3xl text-white"></i>
@@ -319,10 +302,9 @@
                     <p class="text-gray-300 mb-6">
                         Ciptakan karakter, latar belakang, dan aset visual original dari teks. Hasilkan gambar 4K yang siap pakai untuk thumbnail atau cover.
                     </p>
-                    <a href="#" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors">Coba Sekarang <i class="fas fa-arrow-right ml-1"></i></a>
+                    <a href="#cta-section" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors">Coba Sekarang <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
                 
-                <!-- Layanan 2 -->
                 <div class="card-hover rounded-2xl p-8 reveal" style="transition-delay: 200ms;">
                     <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30">
                         <i class="fa-solid fa-magnifying-glass-chart text-3xl text-white"></i>
@@ -331,10 +313,9 @@
                     <p class="text-gray-300 mb-6">
                         Optimalkan thumbnail, judul, deskripsi, dan hashtag video Anda dengan analisis AI untuk jangkauan maksimal.
                     </p>
-                    <a href="#" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors">Pelajari Lebih Lanjut <i class="fas fa-arrow-right ml-1"></i></a>
+                    <a href="#cta-section" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors">Pelajari Lebih Lanjut <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
                 
-                <!-- Layanan 3 -->
                 <div class="card-hover rounded-2xl p-8 reveal" style="transition-delay: 400ms;">
                     <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-purple-500/30">
                         <i class="fa-solid fa-comments text-3xl text-white"></i>
@@ -343,12 +324,11 @@
                     <p class="text-gray-300 mb-6">
                         Gunakan AI kami untuk menghasilkan kata-kata yang catchy, lucu, atau inspiratif sesuai niche dan gaya bahasa Anda.
                     </p>
-                    <a href="#" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors">Dapatkan Ide <i class="fas fa-arrow-right ml-1"></i></a>
+                    <a href="#cta-section" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors">Dapatkan Ide <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
             </div>
         </section>
         
-        <!-- Gallery Section -->
         <section id="galeri" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Galeri <span class="gradient-text">Fitur</span> Kami</h2>
@@ -358,49 +338,41 @@
                 <p class="text-sm text-gray-400 mt-4">Jika gambar tidak muncul, <a href="https://photos.google.com/share/AF1QipMJf-TtTswo15O0XctKbxIPuCfJUbWL8K2tCFSeY_eiNnEDjTO17TzFpfUjuhcPWw/photo/AF1QipOTRqpoScrrUFFztRIn34p5pfBAtwrIlfe2Pa4?key=MDFnbzdPeFdmbzhBRHRnWUZsMzA4bkFpNkZnV0dR" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:underline">klik di sini untuk melihat</a>.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Gambar 1 -->
                 <div class="card-hover rounded-2xl p-6 reveal">
                     <img src="https://i.imghippo.com/files/gjn6259zIc.jpg" alt="Halaman login Uranus Studio" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                     <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
                     <h3 class="text-lg font-bold text-white text-center">Halaman Login Uranus Studio</h3>
                 </div>
-                <!-- Gambar 2 -->
                 <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 100ms;">
                     <img src="https://i.imghippo.com/files/CmEC4197hg.png" alt="Analisis Gambar dan pembuatan karakter" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                     <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
                     <h3 class="text-lg font-bold text-white text-center">Analisis & Kreasi Aset (Bagian 1)</h3>
                 </div>
-                <!-- Gambar 3 -->
                 <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 200ms;">
                     <img src="https://i.imghippo.com/files/BRXE1989k.png" alt="Detail Adegan Anime dan Video" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                     <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
                     <h3 class="text-lg font-bold text-white text-center">Analisis & Kreasi Aset (Bagian 2)</h3>
                 </div>
-                 <!-- Gambar 4 -->
-                <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 300ms;">
+                 <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 300ms;">
                     <img src="https://i.imghippo.com/files/on1730YDQ.jpg" alt="Generator Mentahan Gambar" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                     <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
                     <h3 class="text-lg font-bold text-white text-center">Generator Mentahan Gambar</h3>
                 </div>
-                <!-- Gambar 5 -->
                 <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 400ms;">
                     <img src="https://i.imghippo.com/files/qoK4769xmM.jpg" alt="Generator Hashtag Viral" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                     <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
                     <h3 class="text-lg font-bold text-white text-center">Generator Hashtag Viral</h3>
                 </div>
-                <!-- Gambar 6 -->
                 <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 400ms;">
                     <img src="https://i.imghippo.com/files/exj8512kxk.jpg" alt="Generator Ide Konten Viral" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                     <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
                     <h3 class="text-lg font-bold text-white text-center">Generator Ide Konten Viral</h3>
                 </div>
-                <!-- Gambar 7 -->
                 <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 500ms;">
                     <img src="https://i.imghippo.com/files/CnH1204o.jpg" alt="Generator Kata Kata Viral" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                     <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
                     <h3 class="text-lg font-bold text-white text-center">Generator Kata-Kata Viral</h3>
                 </div>
-                <!-- Gambar 8 -->
                 <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 600ms;">
                     <img src="https://i.imghippo.com/files/RvDz4646Ic.jpg" alt="Analisis Video Lengkap" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                     <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
@@ -409,7 +381,6 @@
             </div>
         </section>
 
-        <!-- Tools Section -->
         <section id="tools" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Fokus pada Dunia <span class="gradient-text">Gaming & Anime</span></h2>
@@ -456,7 +427,6 @@
             </div>
         </section>
 
-        <!-- Testimoni -->
         <section id="testimoni" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Dipercaya oleh <span class="gradient-text">Kreator Top</span></h2>
@@ -466,7 +436,6 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Testi 1 -->
                 <div class="card-hover rounded-2xl p-8 reveal">
                     <div class="flex items-center mb-4">
                         <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/65048ba3-67d5-4aa7-97ee-320b7a36c346.png" alt="Potret kreator konten game dengan rambut pirang dan kacamata, tersenyum." class="w-14 h-14 rounded-full object-cover border-2 border-purple-400" />
@@ -481,7 +450,6 @@
                     <div class="mt-4 flex text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 </div>
                 
-                <!-- Testi 2 -->
                 <div class="card-hover rounded-2xl p-8 reveal" style="transition-delay: 200ms;">
                     <div class="flex items-center mb-4">
                         <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/48134a22-eb3f-4670-bd16-1d2d6874a289.png" alt="Potret wanita kreator kecantikan dengan riasan natural dan rambut hitam panjang." class="w-14 h-14 rounded-full object-cover border-2 border-purple-400" />
@@ -496,7 +464,6 @@
                     <div class="mt-4 flex text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 </div>
                 
-                <!-- Testi 3 -->
                 <div class="card-hover rounded-2xl p-8 reveal" style="transition-delay: 400ms;">
                     <div class="flex items-center mb-4">
                         <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/64416a73-3494-4ce5-b7c9-64dddce13b91.png" alt="Potret pria berambut pendek dengan kumis tipis, pemilik bisnis digital." class="w-14 h-14 rounded-full object-cover border-2 border-purple-400" />
@@ -513,23 +480,21 @@
             </div>
         </section>
 
-        <!-- CTA -->
-        <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <section id="cta-section" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="bg-gradient-to-r from-purple-600 to-blue-500 rounded-3xl p-8 md:p-16 relative overflow-hidden reveal">
                 <div class="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full opacity-50 blur-3xl"></div>
                 <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-white/10 rounded-full opacity-50 blur-3xl"></div>
                 
                 <div class="relative z-10 text-center">
-                    <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Buat. Analisis. Dominasi.</h2>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Bangun Karya Hebatmu Bersama Uranus Studio</h2>
                     <p class="text-lg text-blue-100 mb-8 max-w-3xl mx-auto">
-                        Bergabunglah dengan ribuan kreator lainnya dan rasakan kemudahan membuat konten berkualitas tinggi dengan Uranus Studio.
+                        Semua yang kamu butuhkan sebagai kreator dalam satu aplikasi. Dari ide hingga eksekusi, semua jadi lebih mudah dengan Uranus Studio.
                     </p>
-                    <button class="bg-white text-gray-900 px-8 py-4 rounded-lg font-bold hover:bg-opacity-90 transition-transform hover:scale-105 shadow-2xl">Daftar Sekarang & Dapatkan Kredit Gratis</button>
+                    <a href="https://trakteer.id/uranusfazry/shop/uranustify-ph0A8" target="_blank" rel="noopener noreferrer" class="bg-white text-gray-900 px-8 py-4 rounded-lg font-bold hover:bg-opacity-90 transition-transform hover:scale-105 shadow-2xl inline-block">Saatnya Kamu Coba Sendiri Klik di Sini!</a>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ -->
         <section id="faq" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Pertanyaan <span class="gradient-text">Yang Sering Diajukan</span></h2>
@@ -539,17 +504,15 @@
             </div>
             
             <div class="space-y-4 reveal">
-                <!-- FAQ Item 1 -->
                 <div class="card-hover rounded-xl transition-all duration-200">
                     <button class="faq-toggle flex justify-between items-center w-full text-left p-6">
                         <h3 class="text-lg font-medium text-white">Bagaimana cara mulai menggunakan Uranus Studio?</h3>
                         <i class="fas fa-chevron-down text-purple-400 transition-transform duration-300"></i>
                     </button>
                     <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                        <p class="px-6 pb-6 text-gray-300">Anda bisa langsung mendaftar akun gratis dan mulai menjelajahi semua fitur dasar kami. Untuk fitur premium dan kredit tambahan, Anda bisa berlangganan paket yang tersedia dengan harga yang sangat terjangkau.</p>
+                        <p class="px-6 pb-6 text-gray-300">Anda cukup melakukan satu kali pembelian untuk mendapatkan akses penuh ke semua fitur premium Uranus Studio tanpa biaya berlangganan bulanan. Setelah membeli, anda dapat menggunakan seluruh fitur secara permanen, kapan saja, tanpa batas.</p>
                     </div>
                 </div>
-                <!-- FAQ Item 2 -->
                 <div class="card-hover rounded-xl transition-all duration-200">
                     <button class="faq-toggle flex justify-between items-center w-full text-left p-6">
                         <h3 class="text-lg font-medium text-white">Apakah saya memiliki hak cipta dari gambar AI yang dibuat?</h3>
@@ -559,21 +522,19 @@
                         <p class="px-6 pb-6 text-gray-300">Ya, semua gambar dan aset yang Anda hasilkan melalui Uranus Studio sepenuhnya menjadi milik Anda (lisensi komersial penuh) dan bisa digunakan untuk proyek apa pun tanpa batasan.</p>
                     </div>
                 </div>
-                <!-- FAQ Item 3 -->
                 <div class="card-hover rounded-xl transition-all duration-200">
                     <button class="faq-toggle flex justify-between items-center w-full text-left p-6">
-                        <h3 class="text-lg font-medium text-white">Bagaimana sistem kredit untuk generasi gambar bekerja?</h3>
+                        <h3 class="text-lg font-medium text-white">Apakah Saya Bisa Membuat Gambar AI Tanpa Batas di Uranus Studio?</h3>
                         <i class="fas fa-chevron-down text-purple-400 transition-transform duration-300"></i>
                     </button>
                     <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                        <p class="px-6 pb-6 text-gray-300">Setiap akun baru mendapatkan 50 kredit gratis. 1 kredit digunakan untuk 1 gambar standar. Gambar dengan resolusi tinggi atau fitur lanjutan mungkin menggunakan lebih banyak kredit. Kredit bisa dibeli secara terpisah atau didapatkan melalui paket langganan bulanan.</p>
+                        <p class="px-6 pb-6 text-gray-300">Secara umum Ya, anda dapat membuat gambar AI tanpa menggunakan sistem kredit. Namun, untuk menjaga stabilitas layanan, kami menerapkan batas penggunaan wajar (fair use). Jika penggunaan melebihi batas normal dalam waktu singkat, sistem mungkin akan membatasi akses sementara secara otomatis. Batas ini dirancang agar semua pengguna tetap mendapat pengalaman terbaik tanpa gangguan.</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
     
-    <!-- Footer -->
     <footer class="bg-black/20 border-t border-purple-500/20 mt-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
@@ -626,7 +587,7 @@
             </div>
             
             <div class="mt-12 pt-8 border-t border-purple-500/20 text-center text-gray-500 text-sm">
-                <p>&copy; <span id="copyright-year"></span> Uranus Studio. All rights reserved.</p>
+                <p>© <span id="copyright-year"></span> Uranus Studio. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -708,7 +669,6 @@
         });
     </script>
     
-    <!-- 3. Kode JavaScript untuk Watermark -->
     <script>
       (function() {
         function initializeWatermark() {
