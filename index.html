@@ -206,6 +206,23 @@
             text-align: center;
             white-space: nowrap;
         }
+        /* Centering ads */
+        .ad-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+        }
+        
+        /* --- Interstitial Ad Styles --- */
+        #interstitial-ad-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        #interstitial-ad-overlay.visible #interstitial-ad-container {
+            transform: scale(1);
+        }
+
     </style>
 </head>
 <body class="antialiased">
@@ -246,7 +263,7 @@
                 <a href="#tools" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Tools</a>
                 <a href="#testimoni" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Testimoni</a>
                 <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">FAQ</a>
-                </div>
+            </div>
         </div>
     </nav>
 
@@ -272,6 +289,20 @@
             </div>
         </section>
 
+        <!-- AD: 728x90 -->
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'a658530a373cc0e5d3ff5e2b2d1e1398',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//librarysituation.com/a658530a373cc0e5d3ff5e2b2d1e1398/invoke.js"></script>
+        </div>
+
         <section class="py-12 bg-black/20 reveal">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <p class="text-center text-gray-400 mb-8 font-medium">Dipercaya oleh kreator dari berbagai platform ternama</p>
@@ -293,6 +324,20 @@
                 </p>
             </div>
             
+            <!-- AD: 300x250 -->
+            <div class="ad-container">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '5a4c9489c9315a2fa23f8d670b5f144d',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//librarysituation.com/5a4c9489c9315a2fa23f8d670b5f144d/invoke.js"></script>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="card-hover rounded-2xl p-8 reveal">
                     <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-purple-500/30">
@@ -381,6 +426,20 @@
             </div>
         </section>
 
+        <!-- AD: 468x60 -->
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'c2a4cc50012fc0455f80dae18d4eaf5b',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//librarysituation.com/c2a4cc50012fc0455f80dae18d4eaf5b/invoke.js"></script>
+        </div>
+        
         <section id="tools" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Fokus pada Dunia <span class="gradient-text">Gaming & Anime</span></h2>
@@ -427,6 +486,20 @@
             </div>
         </section>
 
+        <!-- AD: 160x600 -->
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'b910c23796b363c9697ff14e08c04f3b',
+                    'format' : 'iframe',
+                    'height' : 600,
+                    'width' : 160,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//librarysituation.com/b910c23796b363c9697ff14e08c04f3b/invoke.js"></script>
+        </div>
+        
         <section id="testimoni" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Dipercaya oleh <span class="gradient-text">Kreator Top</span></h2>
@@ -435,6 +508,20 @@
                 </p>
             </div>
             
+            <div class="ad-container">
+                <!-- AD: 160x300 -->
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '0e5a7ee4536fc60ac5a72e93afa8374c',
+                        'format' : 'iframe',
+                        'height' : 300,
+                        'width' : 160,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//librarysituation.com/0e5a7ee4536fc60ac5a72e93afa8374c/invoke.js"></script>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="card-hover rounded-2xl p-8 reveal">
                     <div class="flex items-center mb-4">
@@ -533,6 +620,12 @@
                 </div>
             </div>
         </section>
+
+        <!-- AD: NativeBanner -->
+        <div class="ad-container">
+            <script async="async" data-cfasync="false" src="//librarysituation.com/fb7a88a2f86c4c9c3da1d0dd3877378e/invoke.js"></script>
+            <div id="container-fb7a88a2f86c4c9c3da1d0dd3877378e"></div>
+        </div>
     </main>
     
     <footer class="bg-black/20 border-t border-purple-500/20 mt-10">
@@ -579,11 +672,25 @@
                 <div>
                     <h3 class="text-base font-semibold text-white mb-4">Legal</h3>
                     <ul class="space-y-2">
-                         <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Syarat & Ketentuan</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Kebijakan Privasi</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Lisensi</a></li>
                     </ul>
                 </div>
+            </div>
+
+            <!-- AD: 320x50 -->
+            <div class="ad-container">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '56dca65b99c5c149cedd6eca7f7751a8',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//librarysituation.com/56dca65b99c5c149cedd6eca7f7751a8/invoke.js"></script>
             </div>
             
             <div class="mt-12 pt-8 border-t border-purple-500/20 text-center text-gray-500 text-sm">
@@ -591,6 +698,16 @@
             </div>
         </div>
     </footer>
+
+    <!-- Fullscreen Interstitial Ad HTML -->
+    <div id="interstitial-ad-overlay" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[10000] opacity-0 pointer-events-none transition-opacity duration-500">
+        <div id="interstitial-ad-container" class="relative bg-transparent p-2 rounded-lg shadow-2xl w-auto max-w-lg transform scale-95 transition-transform duration-500">
+            <button id="close-interstitial-ad" class="absolute -top-3 -right-3 w-10 h-10 bg-white rounded-full text-black text-2xl font-bold flex items-center justify-center z-10 shadow-lg hover:bg-gray-200 transition-colors">&times;</button>
+            <!-- Ad code will be placed here by JS -->
+            <div id="interstitial-ad-content"></div>
+        </div>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -601,7 +718,6 @@
 
             mobileMenuButton.addEventListener('click', function() {
                 mobileMenu.classList.toggle('hidden');
-                // Toggle icon between bars and times (X)
                 if (mobileMenu.classList.contains('hidden')) {
                     mobileMenuIcon.classList.remove('fa-times');
                     mobileMenuIcon.classList.add('fa-bars');
@@ -611,7 +727,6 @@
                 }
             });
 
-            // Close mobile menu when a link is clicked
             document.querySelectorAll('#mobile-menu a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
@@ -626,21 +741,17 @@
                 button.addEventListener('click', () => {
                     const content = button.nextElementSibling;
                     const icon = button.querySelector('i');
-
-                    // Close other open FAQs
                     faqToggles.forEach(otherButton => {
                         if (otherButton !== button) {
                             otherButton.nextElementSibling.style.maxHeight = null;
                             otherButton.querySelector('i').classList.remove('rotate-180');
                         }
                     });
-
-                    // Toggle current FAQ
                     if (content.style.maxHeight) {
-                        content.style.maxHeight = null; // Close it
+                        content.style.maxHeight = null;
                         icon.classList.remove('rotate-180');
                     } else {
-                        content.style.maxHeight = content.scrollHeight + "px"; // Open it
+                        content.style.maxHeight = content.scrollHeight + "px";
                         icon.classList.add('rotate-180');
                     }
                 });
@@ -655,17 +766,64 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        // Optional: unobserve after revealing to save resources
-                        // observer.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.1 // Trigger when 10% of the element is visible
+                threshold: 0.1
             });
-
             revealElements.forEach(el => {
                 observer.observe(el);
             });
+
+            // --- Fullscreen Interstitial Ad Logic ---
+            const interstitialOverlay = document.getElementById('interstitial-ad-overlay');
+            const closeInterstitialButton = document.getElementById('close-interstitial-ad');
+            const interstitialAdContent = document.getElementById('interstitial-ad-content');
+
+            const showInterstitial = () => {
+                // Check if the ad has been shown in this session
+                if (sessionStorage.getItem('interstitialShown') !== 'true') {
+                    // This is the ad code container. 
+                    // I am using the 300x250 ad as an example. 
+                    // You can replace this with your specific interstitial ad code.
+                    const adScriptContainer = document.createElement('div');
+                    adScriptContainer.innerHTML = `
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key' : '5a4c9489c9315a2fa23f8d670b5f144d',
+                                'format' : 'iframe',
+                                'height' : 250,
+                                'width' : 300,
+                                'params' : {}
+                            };
+                        <\/script>
+                        <script type="text/javascript" src="//librarysituation.com/5a4c9489c9315a2fa23f8d670b5f144d/invoke.js"><\/script>
+                    `;
+                    
+                    // Clear previous content and append the new ad script
+                    interstitialAdContent.innerHTML = '';
+                    interstitialAdContent.appendChild(adScriptContainer);
+
+                    // Show the ad overlay with smooth animation
+                    setTimeout(() => {
+                        interstitialOverlay.classList.add('visible');
+                    }, 100);
+
+                    // Set a flag in session storage to prevent it from showing again
+                    sessionStorage.setItem('interstitialShown', 'true');
+                }
+            };
+
+            const closeInterstitial = () => {
+                interstitialOverlay.classList.remove('visible');
+            };
+
+            // Show the ad after a 1-second delay when the page loads for the first time
+            setTimeout(showInterstitial, 1000);
+
+            // Add event listener to the close button
+            closeInterstitialButton.addEventListener('click', closeInterstitial);
+
         });
     </script>
     
@@ -802,5 +960,13 @@
         }
       })();
     </script>
+    
+    <!-- AD: Popunder -->
+    <script type='text/javascript' src='//librarysituation.com/1b/6f/40/1b6f40fac06b5e0d2dc4b8a034f25cf0.js'></script>
+    
+    <!-- AD: SocialBar -->
+    <script type='text/javascript' src='//librarysituation.com/87/c6/7d/87c67d40abdcfa52433d41629373f44d.js'></script>
+
 </body>
 </html>
+
