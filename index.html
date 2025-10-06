@@ -8,42 +8,190 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Custom Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #0B061A;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000000;
             color: #e2e8f0;
             overflow-x: hidden;
-            background-image: radial-gradient(circle at 1px 1px, rgba(124, 58, 237, 0.2) 1px, transparent 0);
-            background-size: 2rem 2rem;
+            position: relative;
         }
         
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .content-wrapper { position: relative; z-index: 1; }
+        
         .gradient-text {
-            background: linear-gradient(90deg, #9333ea, #3b82f6);
+            background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #c084fc 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
         }
         
-        .card-hover {
-            transition: all 0.3s ease-in-out;
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .glass-card {
+            background: rgba(17, 17, 27, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(147, 51, 234, 0.2);
-            background: rgba(23, 16, 44, 0.5);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+                        0 0 0 1px rgba(147, 51, 234, 0.1) inset;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(147, 51, 234, 0.25);
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
             border-color: rgba(147, 51, 234, 0.5);
+            box-shadow: 0 20px 60px rgba(147, 51, 234, 0.3),
+                        0 0 0 1px rgba(147, 51, 234, 0.3) inset,
+                        0 0 80px rgba(147, 51, 234, 0.2);
         }
         
-        .feature-icon {
-            background: linear-gradient(135deg, #9333ea, #3b82f6);
+        .btn-premium {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-premium:hover::before {
+            left: 100%;
+        }
+        
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(124, 58, 237, 0.5);
+        }
+        
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(147, 51, 234, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-50px, 50px) scale(0.9); }
+        }
+        
+        .orb-1 { top: 10%; left: 5%; width: 400px; height: 400px; background: #7c3aed; animation-delay: 0s; }
+        .orb-2 { top: 60%; right: 10%; width: 350px; height: 350px; background: #3b82f6; animation-delay: 5s; }
+        .orb-3 { bottom: 10%; left: 50%; width: 300px; height: 300px; background: #a855f7; animation-delay: 10s; }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .icon-glow {
+            transition: all 0.3s ease;
+        }
+        
+        .icon-glow:hover {
+            filter: drop-shadow(0 0 15px currentColor);
+            transform: scale(1.1);
+        }
+        
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        #loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(147, 51, 234, 0.2);
+            border-top-color: #7c3aed;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #7c3aed, #3b82f6);
+            border-radius: 2px;
         }
         
         ::selection {
@@ -51,38 +199,14 @@
             color: white;
         }
         
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { 
+            background: linear-gradient(180deg, #7c3aed, #3b82f6); 
+            border-radius: 5px;
         }
+        ::-webkit-scrollbar-thumb:hover { background: #9333ea; }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* Scroll Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* CSS untuk Watermark Futuristik */
-        :root {
-            /* Tema Gelap (Default) */
-            --glow-color: hsl(186, 100%, 50%);
-            --background-color: rgba(10, 25, 40, 0.85);
-            --border-color: rgba(127, 255, 212, 0.3);
-            --text-color: rgba(230, 255, 255, 0.95);
-            --particle-base-hue: 186; /* HSL Hue untuk partikel */
-            --particle-base-lightness: 60;
-        }
-
         @keyframes slideUpFadeIn {
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
@@ -100,39 +224,38 @@
             left: 25px;
             padding: 8px 15px;
             min-width: 212px;
-            background: var(--background-color);
-            color: var(--text-color);
+            background: rgba(10, 25, 40, 0.85);
+            color: rgba(230, 255, 255, 0.95);
             font-family: 'Roboto Mono', monospace;
             font-weight: 500;
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
-            border: 1px solid var(--border-color);
+            border: 1px solid rgba(127, 255, 212, 0.3);
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(var(--glow-color), 0.15), 
-                        0 0 30px rgba(var(--glow-color), 0.1),
-                        inset 0 0 10px rgba(var(--glow-color), 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
             z-index: 9999;
             cursor: pointer;
             user-select: none;
             overflow: hidden;
             opacity: 0;
             animation: slideUpFadeIn 1s ease-out 0.5s forwards;
-            transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            transition: all 0.3s ease;
+            --glow-color: hsl(186, 100%, 50%);
+            --particle-base-hue: 186;
+            --particle-base-lightness: 60;
         }
         
         #futuristic-watermark:hover {
             transform: translateY(-5px) scale(1.03);
             border-color: rgba(127, 255, 212, 0.8);
-            box-shadow: 0 0 25px rgba(var(--glow-color), 0.4), 
-                        0 0 50px rgba(var(--glow-color), 0.25),
-                        inset 0 0 12px rgba(var(--glow-color), 0.2);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
         }
 
         #futuristic-watermark.light-mode {
             --glow-color: hsl(220, 90%, 60%);
-            --background-color: rgba(245, 248, 252, 0.85);
-            --border-color: rgba(60, 100, 150, 0.3);
-            --text-color: rgba(10, 25, 40, 0.95);
+            background: rgba(245, 248, 252, 0.85);
+            border-color: rgba(60, 100, 150, 0.3);
+            color: rgba(10, 25, 40, 0.95);
             --particle-base-hue: 220;
             --particle-base-lightness: 40;
         }
@@ -206,402 +329,461 @@
             text-align: center;
             white-space: nowrap;
         }
+        
+        @media (max-width: 768px) {
+            .glass-card:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
-    <nav class="bg-black/30 backdrop-blur-lg fixed w-full z-50 border-b border-purple-500/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center gap-2">
+    <div id="loading-screen">
+        <div class="flex flex-col items-center gap-4">
+            <div class="loader"></div>
+            <div class="text-purple-400 font-semibold">Loading Uranus Studio...</div>
+        </div>
+    </div>
+
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+
+    <div class="content-wrapper">
+        <nav class="fixed w-full z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-20">
+                    <div class="flex items-center gap-3">
                         <i class="fa-solid fa-meteor text-purple-400 text-2xl"></i>
                         <span class="text-2xl font-bold gradient-text">URANUS STUDIO</span>
                     </div>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#beranda" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">Beranda</a>
-                        <a href="#layanan" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">Layanan</a>
-                        <a href="#galeri" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">Galeri</a>
-                        <a href="#tools" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">Tools</a>
-                        <a href="#testimoni" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">Testimoni</a>
-                        <a href="#faq" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">FAQ</a>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="#beranda" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Beranda</a>
+                        <a href="#layanan" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Layanan</a>
+                        <a href="#galeri" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Galeri</a>
+                        <a href="#tools" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Tools</a>
+                        <a href="#testimoni" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Testimoni</a>
+                        <a href="#faq" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">FAQ</a>
                     </div>
-                </div>
-                
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none">
-                        <span class="sr-only">Buka menu utama</span>
+                    <button type="button" id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5">
                         <i id="mobile-menu-icon" class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
-        </div>
+            
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-black/90 backdrop-blur-xl border-t border-purple-500/20">
+                    <a href="#beranda" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Beranda</a>
+                    <a href="#layanan" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Layanan</a>
+                    <a href="#galeri" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Galeri</a>
+                    <a href="#tools" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Tools</a>
+                    <a href="#testimoni" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Testimoni</a>
+                    <a href="#faq" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">FAQ</a>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <section id="beranda" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen flex items-center">
+                <div class="flex flex-col lg:flex-row items-center gap-12 w-full">
+                    <div class="lg:w-1/2 reveal">
+                        <div class="inline-block px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-full text-purple-300 text-sm font-medium mb-6">
+                            <i class="fas fa-sparkles mr-2"></i>AI-Powered Creative Platform
+                        </div>
+                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 text-white">
+                            <span class="gradient-text">Buka Potensi Kreativitas</span> Tanpa Batas dengan AI
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-xl leading-relaxed">
+                            Platform all-in-one untuk kreator konten, streamer, dan pecinta game & anime. Ciptakan visual 4K, ide viral, dan optimalkan channel Anda di satu tempat.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#cta-section" class="btn-premium text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-purple-500/30 text-center inline-flex items-center justify-center gap-2">
+                                Mulai Sekarang <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 relative reveal" style="transition-delay: 200ms;">
+                        <div class="relative">
+                            <img src="https://i.imghippo.com/files/vWs6818rgg.jpg" alt="Ilustrasi digital futuristik seorang kreator konten sedang bekerja dengan antarmuka hologram AI dan berbagai tools kreatif yang mengambang di sekitarnya." class="rounded-3xl shadow-2xl border border-purple-500/20" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-3xl"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-16 reveal">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <p class="text-center text-gray-500 mb-10 font-medium text-sm uppercase tracking-wider">Dipercaya oleh kreator dari berbagai platform ternama</p>
+                    <div class="flex justify-center items-center gap-12 md:gap-20 flex-wrap">
+                        <i class="fab fa-youtube text-5xl text-gray-600 hover:text-red-500 icon-glow" title="YouTube"></i>
+                        <i class="fab fa-twitch text-5xl text-gray-600 hover:text-purple-500 icon-glow" title="Twitch"></i>
+                        <i class="fab fa-tiktok text-5xl text-gray-600 hover:text-white icon-glow" title="TikTok"></i>
+                        <i class="fab fa-instagram text-5xl text-gray-600 hover:text-pink-500 icon-glow" title="Instagram"></i>
+                        <i class="fab fa-discord text-5xl text-gray-600 hover:text-indigo-400 icon-glow" title="Discord"></i>
+                    </div>
+                </div>
+            </section>
+
+            <section id="layanan" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="section-title text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">Layanan <span class="gradient-text">Unggulan</span></h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto mt-8">
+                        Solusi lengkap untuk semua kebutuhan kreatif Anda dengan dukungan teknologi AI terkini yang super canggih.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-card rounded-3xl p-8 reveal">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center mb-6 shadow-lg shadow-purple-500/50">
+                            <i class="fa-solid fa-wand-magic-sparkles text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Generator Gambar AI 4K</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Ciptakan karakter, latar belakang, dan aset visual original dari teks. Hasilkan gambar 4K yang siap pakai untuk thumbnail atau cover.
+                        </p>
+                        <a href="#cta-section" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors inline-flex items-center gap-2">
+                            Coba Sekarang <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="glass-card rounded-3xl p-8 reveal" style="transition-delay: 150ms;">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-6 shadow-lg shadow-blue-500/50">
+                            <i class="fa-solid fa-magnifying-glass-chart text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Analisis YouTube Otomatis</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Optimalkan thumbnail, judul, deskripsi, dan hashtag video Anda dengan analisis AI untuk jangkauan maksimal.
+                        </p>
+                        <a href="#cta-section" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors inline-flex items-center gap-2">
+                            Pelajari Lebih Lanjut <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="glass-card rounded-3xl p-8 reveal" style="transition-delay: 300ms;">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-6 shadow-lg shadow-purple-500/50">
+                            <i class="fa-solid fa-comments text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Ide Kata-Kata Viral</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Gunakan AI kami untuk menghasilkan kata-kata yang catchy, lucu, atau inspiratif sesuai niche dan gaya bahasa Anda.
+                        </p>
+                        <a href="#cta-section" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors inline-flex items-center gap-2">
+                            Dapatkan Ide <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="galeri" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="section-title text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">Galeri <span class="gradient-text">Fitur</span></h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto mt-8">
+                        Lihat lebih dekat bagaimana tools kami dapat mengubah ide Anda menjadi kenyataan.
+                    </p>
+                    <p class="text-sm text-gray-500 mt-4">Jika gambar tidak muncul, <a href="https://photos.google.com/share/AF1QipMJf-TtTswo15O0XctKbxIPuCfJUbWL8K2tCFSeY_eiNnEDjTO17TzFpfUjuhcPWw/photo/AF1QipOTRqpoScrrUFFztRIn34p5pfBAtwrIlfe2Pa4?key=MDFnbzdPeFdmbzhBRHRnWUZsMzA4bkFpNkZnV0dR" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:underline">klik di sini untuk melihat</a>.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-card rounded-3xl p-6 reveal">
+                        <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
+                            <img src="https://i.imghippo.com/files/gjn6259zIc.jpg" alt="Halaman login Uranus Studio" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
+                        </div>
+                        <h3 class="text-lg font-bold text-white text-center">Halaman Login Uranus Studio</h3>
+                    </div>
+                    <div class="glass-card rounded-3xl p-6 reveal" style="transition-delay: 100ms;">
+                        <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
+                            <img src="https://i.imghippo.com/files/CmEC4197hg.png" alt="Analisis Gambar dan pembuatan karakter" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
+                        </div>
+                        <h3 class="text-lg font-bold text-white text-center">Analisis & Kreasi Aset (Bagian 1)</h3>
+                    </div>
+                    <div class="glass-card rounded-3xl p-6 reveal" style="transition-delay: 200ms;">
+                        <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
+                            <img src="https://i.imghippo.com/files/BRXE1989k.png" alt="Detail Adegan Anime dan Video" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
+                        </div>
+                        <h3 class="text-lg font-bold text-white text-center">Analisis & Kreasi Aset (Bagian 2)</h3>
+                    </div>
+                    <div class="glass-card rounded-3xl p-6 reveal" style="transition-delay: 300ms;">
+                        <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
+                            <img src="https://i.imghippo.com/files/on1730YDQ.jpg" alt="Generator Mentahan Gambar" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
+                        </div>
+                        <h3 class="text-lg font-bold text-white text-center">Generator Mentahan Gambar</h3>
+                    </div>
+                    <div class="glass-card rounded-3xl p-6 reveal" style="transition-delay: 400ms;">
+                        <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
+                            <img src="https://i.imghippo.com/files/qoK4769xmM.jpg" alt="Generator Hashtag Viral" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
+                        </div>
+                        <h3 class="text-lg font-bold text-white text-center">Generator Hashtag Viral</h3>
+                    </div>
+                    <div class="glass-card rounded-3xl p-6 reveal" style="transition-delay: 500ms;">
+                        <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
+                            <img src="https://i.imghippo.com/files/exj8512kxk.jpg" alt="Generator Ide Konten Viral" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
+                        </div>
+                        <h3 class="text-lg font-bold text-white text-center">Generator Ide Konten Viral</h3>
+                    </div>
+                    <div class="glass-card rounded-3xl p-6 reveal" style="transition-delay: 600ms;">
+                        <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
+                            <img src="https://i.imghippo.com/files/CnH1204o.jpg" alt="Generator Kata Kata Viral" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
+                        </div>
+                        <h3 class="text-lg font-bold text-white text-center">Generator Kata-Kata Viral</h3>
+                    </div>
+                    <div class="glass-card rounded-3xl p-6 reveal" style="transition-delay: 700ms;">
+                        <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
+                            <img src="https://i.imghippo.com/files/RvDz4646Ic.jpg" alt="Analisis Video Lengkap" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
+                        </div>
+                        <h3 class="text-lg font-bold text-white text-center">Analisis Video Lengkap</h3>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tools" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="section-title text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">Fokus pada Dunia <span class="gradient-text">Gaming & Anime</span></h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto mt-8">
+                        Tools yang dirancang khusus untuk kebutuhan kreator di dunia game dan anime.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="lg:w-1/2 reveal">
+                        <div class="relative">
+                            <img src="https://i.imghippo.com/files/hPF8621Ro.jpg" alt="Antarmuka dashboard Uranus Studio yang modern dan gelap, menunjukkan berbagai tools analisis dan statistik konten dengan desain minimalis dan futuristik." class="rounded-3xl shadow-2xl border border-purple-500/20" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-3xl"></div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 reveal" style="transition-delay: 200ms;">
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-5">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center shadow-lg shadow-purple-500/50">
+                                    <i class="fa-solid fa-gamepad text-xl text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white mb-2">Dukungan Game Populer</h4>
+                                    <p class="text-gray-400 leading-relaxed">Dukungan khusus untuk Mobile Legends, Valorant, Genshin Impact, Magic Chess, dan lainnya.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-5">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/50">
+                                    <i class="fa-solid fa-pen-nib text-xl text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white mb-2">Prompt Anime Super Detail</h4>
+                                    <p class="text-gray-400 leading-relaxed">Ciptakan dunia anime Anda dengan detail adegan, emosi, gaya visual, dan pencahayaan sinematik.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-5">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg shadow-purple-500/50">
+                                    <i class="fa-solid fa-bolt text-xl text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white mb-2">Alur Kerja Cepat & Praktis</h4>
+                                    <p class="text-gray-400 leading-relaxed">Navigasi mudah dan alur kerja langkah-demi-langkah membuat semua fitur canggih terasa menyenangkan.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="testimoni" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="section-title text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">Dipercaya oleh <span class="gradient-text">Kreator Top</span></h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto mt-8">
+                        Ribuan kreator telah menggunakan Uranus Studio untuk meningkatkan kualitas konten mereka secara drastis.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-card rounded-3xl p-8 reveal">
+                        <div class="flex items-center mb-6">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/65048ba3-67d5-4aa7-97ee-320b7a36c346.png" alt="Potret kreator konten game dengan rambut pirang dan kacamata, tersenyum." class="w-16 h-16 rounded-full object-cover border-2 border-purple-400 shadow-lg" />
+                            <div class="ml-4">
+                                <h4 class="font-bold text-white text-lg">Andi Pratama</h4>
+                                <span class="text-sm text-purple-300">Kreator Konten Game</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 italic leading-relaxed mb-6">
+                            "Karakter AI dari Uranus Studio memberi identitas unik untuk channel YouTube saya. Sekarang saya bisa fokus pada konten tanpa pusing desain karakter!"
+                        </p>
+                        <div class="flex text-yellow-400 gap-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-3xl p-8 reveal" style="transition-delay: 150ms;">
+                        <div class="flex items-center mb-6">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/48134a22-eb3f-4670-bd16-1d2d6874a289.png" alt="Potret wanita kreator kecantikan dengan riasan natural dan rambut hitam panjang." class="w-16 h-16 rounded-full object-cover border-2 border-purple-400 shadow-lg" />
+                            <div class="ml-4">
+                                <h4 class="font-bold text-white text-lg">Siti Rahayu</h4>
+                                <span class="text-sm text-purple-300">Animator & Seniman</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 italic leading-relaxed mb-6">
+                            "Generator prompt anime-nya luar biasa! Sangat detail dan membantu saya mengatasi 'artist block'. Hasil AI art saya jadi lebih hidup dan sinematik."
+                        </p>
+                        <div class="flex text-yellow-400 gap-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-3xl p-8 reveal" style="transition-delay: 300ms;">
+                        <div class="flex items-center mb-6">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/64416a73-3494-4ce5-b7c9-64dddce13b91.png" alt="Potret pria berambut pendek dengan kumis tipis, pemilik bisnis digital." class="w-16 h-16 rounded-full object-cover border-2 border-purple-400 shadow-lg" />
+                            <div class="ml-4">
+                                <div class="font-bold text-white text-lg">Budi Santoso</div>
+                                <span class="text-sm text-purple-300">Agency Digital</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 italic leading-relaxed mb-6">
+                            "Tools analisisnya sangat membantu tim kami. Kami bisa memberikan data dan rekomendasi yang lebih tajam kepada klien-klien kreator kami."
+                        </p>
+                        <div class="flex text-yellow-400 gap-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cta-section" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                <div class="glass-card rounded-3xl p-10 md:p-16 relative overflow-hidden reveal">
+                    <div class="absolute top-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+                    <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+                    
+                    <div class="relative z-10 text-center">
+                        <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight">Bangun Karya Hebatmu Bersama <span class="gradient-text">Uranus Studio</span></h2>
+                        <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
+                            Semua yang kamu butuhkan sebagai kreator dalam satu aplikasi. Dari ide hingga eksekusi, semua jadi lebih mudah dengan Uranus Studio.
+                        </p>
+                        <a href="https://trakteer.id/uranusfazry/shop/uranus-studio-unilD" target="_blank" rel="noopener noreferrer" class="btn-premium text-white px-10 py-5 rounded-xl font-bold shadow-2xl inline-flex items-center gap-3 text-lg">
+                            Saatnya Kamu Coba Sendiri <i class="fas fa-rocket"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="faq" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="section-title text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">Pertanyaan <span class="gradient-text">Yang Sering Diajukan</span></h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto mt-8">
+                        Temukan jawaban untuk pertanyaan umum tentang layanan dan fitur di Uranus Studio.
+                    </p>
+                </div>
+                
+                <div class="space-y-4 reveal">
+                    <div class="glass-card rounded-2xl transition-all duration-200">
+                        <button class="faq-toggle flex justify-between items-center w-full text-left p-6 hover:bg-white/5">
+                            <h3 class="text-lg font-semibold text-white pr-4">Bagaimana cara mulai menggunakan Uranus Studio?</h3>
+                            <i class="fas fa-chevron-down text-purple-400 transition-transform duration-300 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                            <p class="px-6 pb-6 text-gray-400 leading-relaxed">Anda cukup melakukan satu kali pembelian untuk mendapatkan akses penuh ke semua fitur premium Uranus Studio tanpa biaya berlangganan bulanan. Setelah membeli, anda dapat menggunakan seluruh fitur secara permanen, kapan saja, tanpa batas.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl transition-all duration-200">
+                        <button class="faq-toggle flex justify-between items-center w-full text-left p-6 hover:bg-white/5">
+                            <h3 class="text-lg font-semibold text-white pr-4">Apakah saya memiliki hak cipta dari gambar AI yang dibuat?</h3>
+                            <i class="fas fa-chevron-down text-purple-400 transition-transform duration-300 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                            <p class="px-6 pb-6 text-gray-400 leading-relaxed">Ya, semua gambar dan aset yang Anda hasilkan melalui Uranus Studio sepenuhnya menjadi milik Anda (lisensi komersial penuh) dan bisa digunakan untuk proyek apa pun tanpa batasan.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl transition-all duration-200">
+                        <button class="faq-toggle flex justify-between items-center w-full text-left p-6 hover:bg-white/5">
+                            <h3 class="text-lg font-semibold text-white pr-4">Apakah Saya Bisa Membuat Gambar AI Tanpa Batas di Uranus Studio?</h3>
+                            <i class="fas fa-chevron-down text-purple-400 transition-transform duration-300 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                            <p class="px-6 pb-6 text-gray-400 leading-relaxed">Secara umum Ya, anda dapat membuat gambar AI tanpa menggunakan sistem kredit. Namun, untuk menjaga stabilitas layanan, kami menerapkan batas penggunaan wajar (fair use). Jika penggunaan melebihi batas normal dalam waktu singkat, sistem mungkin akan membatasi akses sementara secara otomatis. Batas ini dirancang agar semua pengguna tetap mendapat pengalaman terbaik tanpa gangguan.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
         
-        <div class="md:hidden hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#beranda" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Beranda</a>
-                <a href="#layanan" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Layanan</a>
-                <a href="#galeri" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Galeri</a>
-                <a href="#tools" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Tools</a>
-                <a href="#testimoni" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Testimoni</a>
-                <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">FAQ</a>
-                </div>
-        </div>
-    </nav>
-
-    <main>
-        <section id="beranda" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen flex items-center">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="lg:w-1/2 reveal">
-                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-white">
-                        <span class="gradient-text">Buka Potensi Kreativitas</span> Tanpa Batas dengan AI
-                    </h1>
-                    <p class="text-lg text-gray-300 mb-8 max-w-xl">
-                        Platform all-in-one untuk kreator konten, streamer, dan pecinta game & anime. Ciptakan visual 4K, ide viral, dan optimalkan channel Anda di satu tempat.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#cta-section" class="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-transform hover:scale-105 shadow-lg shadow-purple-500/30 text-center">Beli Sekarang</a>
-                    </div>
-                </div>
-                <div class="lg:w-1/2 relative mt-10 lg:mt-0 animate-float">
-                    <img src="https://i.imghippo.com/files/vWs6818rgg.jpg" alt="Ilustrasi digital futuristik seorang kreator konten sedang bekerja dengan antarmuka hologram AI dan berbagai tools kreatif yang mengambang di sekitarnya." class="rounded-2xl shadow-2xl shadow-purple-500/10" />
-                    <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-purple-800 rounded-full opacity-30 blur-2xl"></div>
-                    <div class="absolute -top-12 -right-8 w-40 h-40 bg-blue-600 rounded-full opacity-30 blur-2xl"></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-12 bg-black/20 reveal">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <p class="text-center text-gray-400 mb-8 font-medium">Dipercaya oleh kreator dari berbagai platform ternama</p>
-                <div class="flex justify-center items-center gap-8 md:gap-16 flex-wrap">
-                    <i class="fab fa-youtube text-4xl text-gray-500 hover:text-white transition-colors" title="YouTube"></i>
-                    <i class="fab fa-twitch text-4xl text-gray-500 hover:text-purple-400 transition-colors" title="Twitch"></i>
-                    <i class="fab fa-tiktok text-4xl text-gray-500 hover:text-white transition-colors" title="TikTok"></i>
-                    <i class="fab fa-instagram text-4xl text-gray-500 hover:text-pink-500 transition-colors" title="Instagram"></i>
-                    <i class="fab fa-discord text-4xl text-gray-500 hover:text-indigo-400 transition-colors" title="Discord"></i>
-                </div>
-            </div>
-        </section>
-
-        <section id="layanan" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Layanan <span class="gradient-text">Unggulan</span> Kami</h2>
-                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
-                    Solusi lengkap untuk semua kebutuhan kreatif Anda dengan dukungan teknologi AI terkini yang super canggih.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card-hover rounded-2xl p-8 reveal">
-                    <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-purple-500/30">
-                        <i class="fa-solid fa-wand-magic-sparkles text-3xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Generator Gambar AI 4K</h3>
-                    <p class="text-gray-300 mb-6">
-                        Ciptakan karakter, latar belakang, dan aset visual original dari teks. Hasilkan gambar 4K yang siap pakai untuk thumbnail atau cover.
-                    </p>
-                    <a href="#cta-section" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors">Coba Sekarang <i class="fas fa-arrow-right ml-1"></i></a>
-                </div>
-                
-                <div class="card-hover rounded-2xl p-8 reveal" style="transition-delay: 200ms;">
-                    <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30">
-                        <i class="fa-solid fa-magnifying-glass-chart text-3xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Analisis YouTube Otomatis</h3>
-                    <p class="text-gray-300 mb-6">
-                        Optimalkan thumbnail, judul, deskripsi, dan hashtag video Anda dengan analisis AI untuk jangkauan maksimal.
-                    </p>
-                    <a href="#cta-section" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors">Pelajari Lebih Lanjut <i class="fas fa-arrow-right ml-1"></i></a>
-                </div>
-                
-                <div class="card-hover rounded-2xl p-8 reveal" style="transition-delay: 400ms;">
-                    <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-purple-500/30">
-                        <i class="fa-solid fa-comments text-3xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Ide Kata-Kata Viral</h3>
-                    <p class="text-gray-300 mb-6">
-                        Gunakan AI kami untuk menghasilkan kata-kata yang catchy, lucu, atau inspiratif sesuai niche dan gaya bahasa Anda.
-                    </p>
-                    <a href="#cta-section" class="font-semibold text-purple-400 hover:text-purple-300 transition-colors">Dapatkan Ide <i class="fas fa-arrow-right ml-1"></i></a>
-                </div>
-            </div>
-        </section>
-        
-        <section id="galeri" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Galeri <span class="gradient-text">Fitur</span> Kami</h2>
-                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
-                    Lihat lebih dekat bagaimana tools kami dapat mengubah ide Anda menjadi kenyataan.
-                </p>
-                <p class="text-sm text-gray-400 mt-4">Jika gambar tidak muncul, <a href="https://photos.google.com/share/AF1QipMJf-TtTswo15O0XctKbxIPuCfJUbWL8K2tCFSeY_eiNnEDjTO17TzFpfUjuhcPWw/photo/AF1QipOTRqpoScrrUFFztRIn34p5pfBAtwrIlfe2Pa4?key=MDFnbzdPeFdmbzhBRHRnWUZsMzA4bkFpNkZnV0dR" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:underline">klik di sini untuk melihat</a>.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card-hover rounded-2xl p-6 reveal">
-                    <img src="https://i.imghippo.com/files/gjn6259zIc.jpg" alt="Halaman login Uranus Studio" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                    <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
-                    <h3 class="text-lg font-bold text-white text-center">Halaman Login Uranus Studio</h3>
-                </div>
-                <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 100ms;">
-                    <img src="https://i.imghippo.com/files/CmEC4197hg.png" alt="Analisis Gambar dan pembuatan karakter" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                    <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
-                    <h3 class="text-lg font-bold text-white text-center">Analisis & Kreasi Aset (Bagian 1)</h3>
-                </div>
-                <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 200ms;">
-                    <img src="https://i.imghippo.com/files/BRXE1989k.png" alt="Detail Adegan Anime dan Video" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                    <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
-                    <h3 class="text-lg font-bold text-white text-center">Analisis & Kreasi Aset (Bagian 2)</h3>
-                </div>
-                 <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 300ms;">
-                    <img src="https://i.imghippo.com/files/on1730YDQ.jpg" alt="Generator Mentahan Gambar" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                    <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
-                    <h3 class="text-lg font-bold text-white text-center">Generator Mentahan Gambar</h3>
-                </div>
-                <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 400ms;">
-                    <img src="https://i.imghippo.com/files/qoK4769xmM.jpg" alt="Generator Hashtag Viral" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                    <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
-                    <h3 class="text-lg font-bold text-white text-center">Generator Hashtag Viral</h3>
-                </div>
-                <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 400ms;">
-                    <img src="https://i.imghippo.com/files/exj8512kxk.jpg" alt="Generator Ide Konten Viral" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                    <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
-                    <h3 class="text-lg font-bold text-white text-center">Generator Ide Konten Viral</h3>
-                </div>
-                <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 500ms;">
-                    <img src="https://i.imghippo.com/files/CnH1204o.jpg" alt="Generator Kata Kata Viral" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                    <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
-                    <h3 class="text-lg font-bold text-white text-center">Generator Kata-Kata Viral</h3>
-                </div>
-                <div class="card-hover rounded-2xl p-6 reveal" style="transition-delay: 600ms;">
-                    <img src="https://i.imghippo.com/files/RvDz4646Ic.jpg" alt="Analisis Video Lengkap" class="rounded-lg mb-4 w-full h-auto object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                    <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
-                    <h3 class="text-lg font-bold text-white text-center">Analisis Video Lengkap</h3>
-                </div>
-            </div>
-        </section>
-
-        <section id="tools" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Fokus pada Dunia <span class="gradient-text">Gaming & Anime</span></h2>
-                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
-                    Tools yang dirancang khusus untuk kebutuhan kreator di dunia game dan anime.
-                </p>
-            </div>
-            
-            <div class="flex flex-col lg:flex-row gap-12 items-center">
-                <div class="lg:w-1/2 reveal">
-                    <img src="https://i.imghippo.com/files/hPF8621Ro.jpg" alt="Antarmuka dashboard Uranus Studio yang modern dan gelap, menunjukkan berbagai tools analisis dan statistik konten dengan desain minimalis dan futuristik." class="rounded-2xl shadow-xl shadow-blue-500/10" />
-                </div>
-                <div class="lg:w-1/2 reveal" style="transition-delay: 200ms;">
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 mt-1 feature-icon w-10 h-10 rounded-lg flex items-center justify-center shadow-lg shadow-purple-500/30">
-                                <i class="fa-solid fa-gamepad text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold text-white">Dukungan Game Populer</h4>
-                                <p class="text-gray-300 mt-1">Dukungan khusus untuk Mobile Legends, Valorant, Genshin Impact, Magic Chess, dan lainnya.</p>
-                            </div>
+        <footer class="border-t border-purple-500/20 mt-20" style="background: rgba(0, 0, 0, 0.5);">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10">
+                    <div class="col-span-2 lg:col-span-1">
+                        <div class="flex items-center gap-2 mb-4">
+                            <i class="fa-solid fa-meteor text-purple-400 text-xl"></i>
+                            <h3 class="text-lg font-bold text-white">Uranus Studio</h3>
                         </div>
-                        <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 mt-1 feature-icon w-10 h-10 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/30">
-                                <i class="fa-solid fa-pen-nib text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold text-white">Prompt Anime Super Detail</h4>
-                                <p class="text-gray-300 mt-1">Ciptakan dunia anime Anda dengan detail adegan, emosi, gaya visual, dan pencahayaan sinematik.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 mt-1 feature-icon w-10 h-10 rounded-lg flex items-center justify-center shadow-lg shadow-purple-500/30">
-                                <i class="fa-solid fa-bolt text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold text-white">Alur Kerja Cepat & Praktis</h4>
-                                <p class="text-gray-300 mt-1">Navigasi mudah dan alur kerja langkah-demi-langkah membuat semua fitur canggih terasa menyenangkan.</p>
-                            </div>
+                        <p class="text-gray-500 text-sm mb-6">Platform kreatif untuk era digital.</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 hover:text-purple-400 hover:bg-white/10 transition-all icon-glow"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 hover:text-blue-400 hover:bg-white/10 transition-all icon-glow"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-white/10 transition-all icon-glow"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 hover:text-indigo-400 hover:bg-white/10 transition-all icon-glow"><i class="fab fa-discord"></i></a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                    
+                    <div>
+                        <h3 class="text-base font-semibold text-white mb-4">Layanan</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#layanan" class="text-gray-500 hover:text-white text-sm transition-colors">Gambar AI 4K</a></li>
+                            <li><a href="#layanan" class="text-gray-500 hover:text-white text-sm transition-colors">Analisis YouTube</a></li>
+                            <li><a href="#layanan" class="text-gray-500 hover:text-white text-sm transition-colors">Ide Kata Viral</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-base font-semibold text-white mb-4">Tools</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#tools" class="text-gray-500 hover:text-white text-sm transition-colors">Dukungan Game</a></li>
+                            <li><a href="#tools" class="text-gray-500 hover:text-white text-sm transition-colors">Prompt Anime</a></li>
+                            <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Semua Tools</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-base font-semibold text-white mb-4">Perusahaan</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Tentang Kami</a></li>
+                            <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Blog</a></li>
+                            <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Karir</a></li>
+                        </ul>
+                    </div>
 
-        <section id="testimoni" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Dipercaya oleh <span class="gradient-text">Kreator Top</span></h2>
-                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
-                    Ribuan kreator telah menggunakan Uranus Studio untuk meningkatkan kualitas konten mereka secara drastis.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card-hover rounded-2xl p-8 reveal">
-                    <div class="flex items-center mb-4">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/65048ba3-67d5-4aa7-97ee-320b7a36c346.png" alt="Potret kreator konten game dengan rambut pirang dan kacamata, tersenyum." class="w-14 h-14 rounded-full object-cover border-2 border-purple-400" />
-                        <div class="ml-4">
-                            <h4 class="font-bold text-white">Andi Pratama</h4>
-                            <span class="text-sm text-purple-300">Kreator Konten Game</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 italic">
-                        "Karakter AI dari Uranus Studio memberi identitas unik untuk channel YouTube saya. Sekarang saya bisa fokus pada konten tanpa pusing desain karakter!"
-                    </p>
-                    <div class="mt-4 flex text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                </div>
-                
-                <div class="card-hover rounded-2xl p-8 reveal" style="transition-delay: 200ms;">
-                    <div class="flex items-center mb-4">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/48134a22-eb3f-4670-bd16-1d2d6874a289.png" alt="Potret wanita kreator kecantikan dengan riasan natural dan rambut hitam panjang." class="w-14 h-14 rounded-full object-cover border-2 border-purple-400" />
-                        <div class="ml-4">
-                            <h4 class="font-bold text-white">Siti Rahayu</h4>
-                            <span class="text-sm text-purple-300">Animator & Seniman</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 italic">
-                        "Generator prompt anime-nya luar biasa! Sangat detail dan membantu saya mengatasi 'artist block'. Hasil AI art saya jadi lebih hidup dan sinematik."
-                    </p>
-                    <div class="mt-4 flex text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                </div>
-                
-                <div class="card-hover rounded-2xl p-8 reveal" style="transition-delay: 400ms;">
-                    <div class="flex items-center mb-4">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/64416a73-3494-4ce5-b7c9-64dddce13b91.png" alt="Potret pria berambut pendek dengan kumis tipis, pemilik bisnis digital." class="w-14 h-14 rounded-full object-cover border-2 border-purple-400" />
-                        <div class="ml-4">
-                            <div class="font-bold text-white">Budi Santoso</div>
-                            <span class="text-sm text-purple-300">Agency Digital</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 italic">
-                        "Tools analisisnya sangat membantu tim kami. Kami bisa memberikan data dan rekomendasi yang lebih tajam kepada klien-klien kreator kami."
-                    </p>
-                    <div class="mt-4 flex text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="cta-section" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div class="bg-gradient-to-r from-purple-600 to-blue-500 rounded-3xl p-8 md:p-16 relative overflow-hidden reveal">
-                <div class="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full opacity-50 blur-3xl"></div>
-                <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-white/10 rounded-full opacity-50 blur-3xl"></div>
-                
-                <div class="relative z-10 text-center">
-                    <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Bangun Karya Hebatmu Bersama Uranus Studio</h2>
-                    <p class="text-lg text-blue-100 mb-8 max-w-3xl mx-auto">
-                        Semua yang kamu butuhkan sebagai kreator dalam satu aplikasi. Dari ide hingga eksekusi, semua jadi lebih mudah dengan Uranus Studio.
-                    </p>
-                    <a href="https://trakteer.id/uranusfazry/shop/uranus-studio-unilD" target="_blank" rel="noopener noreferrer" class="bg-white text-gray-900 px-8 py-4 rounded-lg font-bold hover:bg-opacity-90 transition-transform hover:scale-105 shadow-2xl inline-block">Saatnya Kamu Coba Sendiri Klik di Sini!</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Pertanyaan <span class="gradient-text">Yang Sering Diajukan</span></h2>
-                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
-                    Temukan jawaban untuk pertanyaan umum tentang layanan dan fitur di Uranus Studio.
-                </p>
-            </div>
-            
-            <div class="space-y-4 reveal">
-                <div class="card-hover rounded-xl transition-all duration-200">
-                    <button class="faq-toggle flex justify-between items-center w-full text-left p-6">
-                        <h3 class="text-lg font-medium text-white">Bagaimana cara mulai menggunakan Uranus Studio?</h3>
-                        <i class="fas fa-chevron-down text-purple-400 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                        <p class="px-6 pb-6 text-gray-300">Anda cukup melakukan satu kali pembelian untuk mendapatkan akses penuh ke semua fitur premium Uranus Studio tanpa biaya berlangganan bulanan. Setelah membeli, anda dapat menggunakan seluruh fitur secara permanen, kapan saja, tanpa batas.</p>
-                    </div>
-                </div>
-                <div class="card-hover rounded-xl transition-all duration-200">
-                    <button class="faq-toggle flex justify-between items-center w-full text-left p-6">
-                        <h3 class="text-lg font-medium text-white">Apakah saya memiliki hak cipta dari gambar AI yang dibuat?</h3>
-                        <i class="fas fa-chevron-down text-purple-400 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                        <p class="px-6 pb-6 text-gray-300">Ya, semua gambar dan aset yang Anda hasilkan melalui Uranus Studio sepenuhnya menjadi milik Anda (lisensi komersial penuh) dan bisa digunakan untuk proyek apa pun tanpa batasan.</p>
-                    </div>
-                </div>
-                <div class="card-hover rounded-xl transition-all duration-200">
-                    <button class="faq-toggle flex justify-between items-center w-full text-left p-6">
-                        <h3 class="text-lg font-medium text-white">Apakah Saya Bisa Membuat Gambar AI Tanpa Batas di Uranus Studio?</h3>
-                        <i class="fas fa-chevron-down text-purple-400 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                        <p class="px-6 pb-6 text-gray-300">Secara umum Ya, anda dapat membuat gambar AI tanpa menggunakan sistem kredit. Namun, untuk menjaga stabilitas layanan, kami menerapkan batas penggunaan wajar (fair use). Jika penggunaan melebihi batas normal dalam waktu singkat, sistem mungkin akan membatasi akses sementara secara otomatis. Batas ini dirancang agar semua pengguna tetap mendapat pengalaman terbaik tanpa gangguan.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <footer class="bg-black/20 border-t border-purple-500/20 mt-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
-                <div class="col-span-2 lg:col-span-1">
-                    <h3 class="text-lg font-semibold text-white mb-4">Uranus Studio</h3>
-                    <p class="text-gray-400 text-sm">Platform kreatif untuk era digital.</p>
-                    <div class="flex space-x-4 mt-4">
-                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-red-500 transition-colors"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors"><i class="fab fa-discord"></i></a>
+                    <div>
+                        <h3 class="text-base font-semibold text-white mb-4">Legal</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Syarat & Ketentuan</a></li>
+                            <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Kebijakan Privasi</a></li>
+                            <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Lisensi</a></li>
+                        </ul>
                     </div>
                 </div>
                 
-                <div>
-                    <h3 class="text-base font-semibold text-white mb-4">Layanan</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#layanan" class="text-gray-400 hover:text-white text-sm transition-colors">Gambar AI 4K</a></li>
-                        <li><a href="#layanan" class="text-gray-400 hover:text-white text-sm transition-colors">Analisis YouTube</a></li>
-                        <li><a href="#layanan" class="text-gray-400 hover:text-white text-sm transition-colors">Ide Kata Viral</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-base font-semibold text-white mb-4">Tools</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#tools" class="text-gray-400 hover:text-white text-sm transition-colors">Dukungan Game</a></li>
-                        <li><a href="#tools" class="text-gray-400 hover:text-white text-sm transition-colors">Prompt Anime</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Semua Tools</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-base font-semibold text-white mb-4">Perusahaan</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Tentang Kami</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Blog</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Karir</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="text-base font-semibold text-white mb-4">Legal</h3>
-                    <ul class="space-y-2">
-                         <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Syarat & Ketentuan</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Kebijakan Privasi</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Lisensi</a></li>
-                    </ul>
+                <div class="mt-12 pt-8 border-t border-purple-500/20 text-center text-gray-600 text-sm">
+                    <p>© <span id="copyright-year"></span> Uranus Studio. All rights reserved.</p>
                 </div>
             </div>
-            
-            <div class="mt-12 pt-8 border-t border-purple-500/20 text-center text-gray-500 text-sm">
-                <p>© <span id="copyright-year"></span> Uranus Studio. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading-screen').classList.add('hidden');
+            }, 1500);
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
-            // --- Mobile Menu Toggle ---
+            // Mobile Menu Toggle
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileMenuIcon = document.getElementById('mobile-menu-icon');
 
             mobileMenuButton.addEventListener('click', function() {
                 mobileMenu.classList.toggle('hidden');
-                // Toggle icon between bars and times (X)
                 if (mobileMenu.classList.contains('hidden')) {
                     mobileMenuIcon.classList.remove('fa-times');
                     mobileMenuIcon.classList.add('fa-bars');
@@ -611,7 +793,6 @@
                 }
             });
 
-            // Close mobile menu when a link is clicked
             document.querySelectorAll('#mobile-menu a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
@@ -620,14 +801,13 @@
                 });
             });
 
-            // --- FAQ Accordion ---
+            // FAQ Accordion
             const faqToggles = document.querySelectorAll('.faq-toggle');
             faqToggles.forEach(button => {
                 button.addEventListener('click', () => {
                     const content = button.nextElementSibling;
                     const icon = button.querySelector('i');
 
-                    // Close other open FAQs
                     faqToggles.forEach(otherButton => {
                         if (otherButton !== button) {
                             otherButton.nextElementSibling.style.maxHeight = null;
@@ -635,32 +815,29 @@
                         }
                     });
 
-                    // Toggle current FAQ
                     if (content.style.maxHeight) {
-                        content.style.maxHeight = null; // Close it
+                        content.style.maxHeight = null;
                         icon.classList.remove('rotate-180');
                     } else {
-                        content.style.maxHeight = content.scrollHeight + "px"; // Open it
+                        content.style.maxHeight = content.scrollHeight + "px";
                         icon.classList.add('rotate-180');
                     }
                 });
             });
 
-            // --- Dynamic Copyright Year ---
+            // Copyright Year
             document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
-            // --- Reveal on Scroll Animation ---
+            // Reveal on Scroll
             const revealElements = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        // Optional: unobserve after revealing to save resources
-                        // observer.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.1 // Trigger when 10% of the element is visible
+                threshold: 0.1
             });
 
             revealElements.forEach(el => {
@@ -709,6 +886,7 @@
             const ctx = canvas.getContext('2d');
             let particles = [];
             const resizeCanvas = () => { if (watermarkEl) { canvas.width = watermarkEl.offsetWidth; canvas.height = watermarkEl.offsetHeight; } };
+            
             class Particle {
                 constructor() { this.reset(); this.baseSpeedX = (Math.random() - 0.5) * 0.5; this.baseSpeedY = (Math.random() - 0.5) * 0.5; this.speedX = this.baseSpeedX; this.speedY = this.baseSpeedY; }
                 update() {
@@ -725,6 +903,7 @@
                 }
                 reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.opacity = Math.random() * 0.5 + 0.2; this.size = Math.random() * 1.5 + 0.5; this.fadeSpeed = Math.random() * 0.015 + 0.005; }
             }
+            
             const animateParticles = () => { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); ctx.globalAlpha = 1.0; requestAnimationFrame(animateParticles); };
             
             const textScramble = (el) => {
