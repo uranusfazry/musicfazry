@@ -21,7 +21,7 @@
             overflow-x: hidden;
             position: relative;
         }
-
+        
         body::before {
             content: '';
             position: fixed;
@@ -353,16 +353,10 @@
         <nav class="fixed w-full z-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-20">
-                    <div class="flex items-center">
-                         <button type="button" id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 mr-2">
-                            <i id="mobile-menu-icon" class="fas fa-bars text-xl"></i>
-                        </button>
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-meteor text-purple-400 text-2xl"></i>
-                            <span class="text-2xl font-bold gradient-text">URANUS STUDIO</span>
-                        </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-meteor text-purple-400 text-2xl"></i>
+                        <span class="text-2xl font-bold gradient-text">URANUS STUDIO</span>
                     </div>
-                    
                     <div class="hidden md:flex items-center space-x-1">
                         <a href="#beranda" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Beranda</a>
                         <a href="#layanan" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Layanan</a>
@@ -371,6 +365,9 @@
                         <a href="#testimoni" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Testimoni</a>
                         <a href="#faq" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">FAQ</a>
                     </div>
+                    <button type="button" id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5">
+                        <i id="mobile-menu-icon" class="fas fa-bars text-xl"></i>
+                    </button>
                 </div>
             </div>
             
@@ -986,4 +983,3 @@
     </script>
 </body>
 </html>
-
