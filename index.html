@@ -355,6 +355,34 @@
         .animated-hero-image {
             animation: hero-image-animation 30s ease-in-out infinite;
         }
+
+        /* Interstitial Ad Styles */
+        #interstitial-ad-overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        #interstitial-ad-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        #interstitial-ad-overlay.visible #interstitial-ad-container {
+            animation: fadeInScaleUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        #interstitial-ad-overlay.closing {
+            opacity: 0;
+        }
+        #interstitial-ad-overlay.closing #interstitial-ad-container {
+            animation: fadeOutScaleDown 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        @keyframes fadeInScaleUp {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes fadeOutScaleDown {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.9); }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -404,7 +432,22 @@
         </nav>
 
         <main>
-            <section id="beranda" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen flex items-center">
+            <!-- AD CODE 728x90 START -->
+            <div class="flex justify-center pt-24 pb-4">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'a658530a373cc0e5d3ff5e2b2d1e1398',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//librarysituation.com/a658530a373cc0e5d3ff5e2b2d1e1398/invoke.js"></script>
+            </div>
+            <!-- AD CODE 728x90 END -->
+
+            <section id="beranda" class="pt-8 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen flex items-center">
                 <div class="flex flex-col lg:flex-row items-center gap-12 w-full">
                     <div class="lg:w-1/2 reveal">
                         <div class="inline-block px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-full text-purple-300 text-sm font-medium mb-6">
@@ -494,6 +537,21 @@
                 </div>
             </section>
             
+            <!-- AD CODE 300x250 START -->
+            <div class="flex justify-center py-10">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '5a4c9489c9315a2fa23f8d670b5f144d',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//librarysituation.com/5a4c9489c9315a2fa23f8d670b5f144d/invoke.js"></script>
+            </div>
+            <!-- AD CODE 300x250 END -->
+
             <section id="galeri" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <div class="text-center mb-16 reveal">
                     <h2 class="section-title text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">Galeri <span class="gradient-text">Fitur</span></h2>
@@ -561,6 +619,13 @@
                     </div>
                 </div>
             </section>
+            
+            <!-- AD CODE NativeBanner START -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <script async="async" data-cfasync="false" src="//librarysituation.com/fb7a88a2f86c4c9c3da1d0dd3877378e/invoke.js"></script>
+                <div id="container-fb7a88a2f86c4c9c3da1d0dd3877378e"></div>
+            </div>
+            <!-- AD CODE NativeBanner END -->
 
             <section id="tools" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <div class="text-center mb-16 reveal">
@@ -619,54 +684,70 @@
                     </p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="glass-card rounded-3xl p-8 reveal">
-                        <div class="flex items-center mb-6">
-                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/65048ba3-67d5-4aa7-97ee-320b7a36c346.png" alt="Potret kreator konten game dengan rambut pirang dan kacamata, tersenyum." class="w-16 h-16 rounded-full object-cover border-2 border-purple-400 shadow-lg" />
-                            <div class="ml-4">
-                                <h4 class="font-bold text-white text-lg">Andi Pratama</h4>
-                                <span class="text-sm text-purple-300">Kreator Konten Game</span>
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- Main Testimonials -->
+                    <div class="w-full lg:w-4/5 grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="glass-card rounded-3xl p-8 reveal">
+                            <div class="flex items-center mb-6">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/65048ba3-67d5-4aa7-97ee-320b7a36c346.png" alt="Potret kreator konten game dengan rambut pirang dan kacamata, tersenyum." class="w-16 h-16 rounded-full object-cover border-2 border-purple-400 shadow-lg" />
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-white text-lg">Andi Pratama</h4>
+                                    <span class="text-sm text-purple-300">Kreator Konten Game</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 italic leading-relaxed mb-6">
+                                "Karakter AI dari Uranus Studio memberi identitas unik untuk channel YouTube saya. Sekarang saya bisa fokus pada konten tanpa pusing desain karakter!"
+                            </p>
+                            <div class="flex text-yellow-400 gap-1">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
                         </div>
-                        <p class="text-gray-400 italic leading-relaxed mb-6">
-                            "Karakter AI dari Uranus Studio memberi identitas unik untuk channel YouTube saya. Sekarang saya bisa fokus pada konten tanpa pusing desain karakter!"
-                        </p>
-                        <div class="flex text-yellow-400 gap-1">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card rounded-3xl p-8 reveal" style="transition-delay: 150ms;">
-                        <div class="flex items-center mb-6">
-                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/48134a22-eb3f-4670-bd16-1d2d6874a289.png" alt="Potret wanita kreator kecantikan dengan riasan natural dan rambut hitam panjang." class="w-16 h-16 rounded-full object-cover border-2 border-purple-400 shadow-lg" />
-                            <div class="ml-4">
-                                <h4 class="font-bold text-white text-lg">Siti Rahayu</h4>
-                                <span class="text-sm text-purple-300">Animator & Seniman</span>
+                        
+                        <div class="glass-card rounded-3xl p-8 reveal" style="transition-delay: 150ms;">
+                            <div class="flex items-center mb-6">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/48134a22-eb3f-4670-bd16-1d2d6874a289.png" alt="Potret wanita kreator kecantikan dengan riasan natural dan rambut hitam panjang." class="w-16 h-16 rounded-full object-cover border-2 border-purple-400 shadow-lg" />
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-white text-lg">Siti Rahayu</h4>
+                                    <span class="text-sm text-purple-300">Animator & Seniman</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 italic leading-relaxed mb-6">
+                                "Generator prompt anime-nya luar biasa! Sangat detail dan membantu saya mengatasi 'artist block'. Hasil AI art saya jadi lebih hidup dan sinematik."
+                            </p>
+                            <div class="flex text-yellow-400 gap-1">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
                         </div>
-                        <p class="text-gray-400 italic leading-relaxed mb-6">
-                            "Generator prompt anime-nya luar biasa! Sangat detail dan membantu saya mengatasi 'artist block'. Hasil AI art saya jadi lebih hidup dan sinematik."
-                        </p>
-                        <div class="flex text-yellow-400 gap-1">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card rounded-3xl p-8 reveal" style="transition-delay: 300ms;">
-                        <div class="flex items-center mb-6">
-                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/64416a73-3494-4ce5-b7c9-64dddce13b91.png" alt="Potret pria berambut pendek dengan kumis tipis, pemilik bisnis digital." class="w-16 h-16 rounded-full object-cover border-2 border-purple-400 shadow-lg" />
-                            <div class="ml-4">
-                                <div class="font-bold text-white text-lg">Budi Santoso</div>
-                                <span class="text-sm text-purple-300">Agency Digital</span>
+                         <div class="glass-card rounded-3xl p-8 reveal md:col-span-2" style="transition-delay: 300ms;">
+                            <div class="flex items-center mb-6">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/64416a73-3494-4ce5-b7c9-64dddce13b91.png" alt="Potret pria berambut pendek dengan kumis tipis, pemilik bisnis digital." class="w-16 h-16 rounded-full object-cover border-2 border-purple-400 shadow-lg" />
+                                <div class="ml-4">
+                                    <div class="font-bold text-white text-lg">Budi Santoso</div>
+                                    <span class="text-sm text-purple-300">Agency Digital</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 italic leading-relaxed mb-6">
+                                "Tools analisisnya sangat membantu tim kami. Kami bisa memberikan data dan rekomendasi yang lebih tajam kepada klien-klien kreator kami."
+                            </p>
+                            <div class="flex text-yellow-400 gap-1">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                             </div>
                         </div>
-                        <p class="text-gray-400 italic leading-relaxed mb-6">
-                            "Tools analisisnya sangat membantu tim kami. Kami bisa memberikan data dan rekomendasi yang lebih tajam kepada klien-klien kreator kami."
-                        </p>
-                        <div class="flex text-yellow-400 gap-1">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        </div>
                     </div>
+                    <!-- AD CODE 160x600 START -->
+                    <div class="w-full lg:w-1/5 flex justify-center items-start">
+                         <script type="text/javascript">
+                            atOptions = {
+                                'key' : 'b910c23796b363c9697ff14e08c04f3b',
+                                'format' : 'iframe',
+                                'height' : 600,
+                                'width' : 160,
+                                'params' : {}
+                            };
+                        </script>
+                        <script type="text/javascript" src="//librarysituation.com/b910c23796b363c9697ff14e08c04f3b/invoke.js"></script>
+                    </div>
+                     <!-- AD CODE 160x600 END -->
                 </div>
             </section>
 
@@ -724,6 +805,54 @@
                         </div>
                     </div>
                 </div>
+            </section>
+            
+            <!-- Additional ADs section -->
+            <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                 <div class="text-center mb-10">
+                     <h3 class="text-2xl font-bold text-white">Format Iklan Lainnya</h3>
+                 </div>
+                 <div class="flex flex-wrap justify-center items-center gap-8">
+                     <!-- AD CODE 160x300 -->
+                     <div>
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key' : '0e5a7ee4536fc60ac5a72e93afa8374c',
+                                'format' : 'iframe',
+                                'height' : 300,
+                                'width' : 160,
+                                'params' : {}
+                            };
+                        </script>
+                        <script type="text/javascript" src="//librarysituation.com/0e5a7ee4536fc60ac5a72e93afa8374c/invoke.js"></script>
+                     </div>
+                      <!-- AD CODE 320x50 -->
+                     <div>
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key' : '56dca65b99c5c149cedd6eca7f7751a8',
+                                'format' : 'iframe',
+                                'height' : 50,
+                                'width' : 320,
+                                'params' : {}
+                            };
+                        </script>
+                        <script type="text/javascript" src="//librarysituation.com/56dca65b99c5c149cedd6eca7f7751a8/invoke.js"></script>
+                     </div>
+                      <!-- AD CODE 468x60 -->
+                     <div>
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key' : 'c2a4cc50012fc0455f80dae18d4eaf5b',
+                                'format' : 'iframe',
+                                'height' : 60,
+                                'width' : 468,
+                                'params' : {}
+                            };
+                        </script>
+                        <script type="text/javascript" src="//librarysituation.com/c2a4cc50012fc0455f80dae18d4eaf5b/invoke.js"></script>
+                     </div>
+                 </div>
             </section>
         </main>
         
@@ -787,6 +916,27 @@
             </div>
         </footer>
     </div>
+
+    <!-- Interstitial Ad HTML -->
+    <div id="interstitial-ad-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-[9990] p-4">
+        <div id="interstitial-ad-container" class="relative bg-gray-900/50 border border-purple-500/30 rounded-2xl shadow-2xl w-full max-w-sm p-4 text-center">
+            <button id="close-interstitial-btn" class="absolute -top-3 -right-3 w-9 h-9 bg-white text-black rounded-full text-2xl font-bold flex items-center justify-center shadow-lg hover:scale-110 transition-transform z-10">&times;</button>
+            <div class="p-4">
+                 <!-- Ad Slot 300x250 -->
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '5a4c9489c9315a2fa23f8d670b5f144d',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//librarysituation.com/5a4c9489c9315a2fa23f8d670b5f144d/invoke.js"></script>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         // Loading Screen
@@ -862,6 +1012,30 @@
 
             revealElements.forEach(el => {
                 observer.observe(el);
+            });
+
+            // Interstitial Ad Logic
+            const overlay = document.getElementById('interstitial-ad-overlay');
+            const closeBtn = document.getElementById('close-interstitial-btn');
+            const adShown = sessionStorage.getItem('interstitialAdShown');
+
+            if (!adShown) {
+                // Show ad after a short delay
+                setTimeout(() => {
+                    overlay.classList.add('visible');
+                    sessionStorage.setItem('interstitialAdShown', 'true');
+                }, 2000); // Show after 2 seconds
+            } else {
+                // If already shown in this session, hide it completely
+                overlay.style.display = 'none';
+            }
+
+            closeBtn.addEventListener('click', () => {
+                overlay.classList.add('closing');
+                // Remove from DOM after animation
+                overlay.addEventListener('transitionend', () => {
+                    overlay.style.display = 'none';
+                }, { once: true });
             });
         });
     </script>
@@ -1001,6 +1175,11 @@
         }
       })();
     </script>
+
+    <!-- Popunder and SocialBar Ad codes placed at the end of body -->
+    <script type='text/javascript' src='//librarysituation.com/1b/6f/40/1b6f40fac06b5e0d2dc4b8a034f25cf0.js'></script>
+    <script type='text/javascript' src='//librarysituation.com/87/c6/7d/87c67d40abdcfa52433d41629373f44d.js'></script> 
+
 </body>
 </html>
 
