@@ -234,9 +234,9 @@
             font-weight: 500;
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(127, 255, 212, 0.3);
+            border: 1px solid rgba(147, 51, 234, 0.3);
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+            box-shadow: 0 0 15px rgba(147, 51, 234, 0.2);
             z-index: 9999;
             cursor: pointer;
             user-select: none;
@@ -244,15 +244,15 @@
             opacity: 0;
             animation: slideUpFadeIn 1s ease-out 0.5s forwards;
             transition: all 0.3s ease;
-            --glow-color: hsl(186, 100%, 50%);
-            --particle-base-hue: 186;
-            --particle-base-lightness: 60;
+            --glow-color: hsl(258, 90%, 65%);
+            --particle-base-hue: 258;
+            --particle-base-lightness: 58;
         }
         
         #futuristic-watermark:hover {
             transform: translateY(-5px) scale(1.03);
-            border-color: rgba(127, 255, 212, 0.8);
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+            border-color: rgba(147, 51, 234, 0.8);
+            box-shadow: 0 0 25px rgba(147, 51, 234, 0.4);
         }
 
         #futuristic-watermark.light-mode {
@@ -339,6 +339,22 @@
                 transform: translateY(-4px) scale(1.01);
             }
         }
+        
+        /* Hero Image Animation */
+        @keyframes hero-image-animation {
+            0% {
+                transform: scale(1.05) translate(0, 0);
+            }
+            50% {
+                transform: scale(1.15) translate(-3%, 3%);
+            }
+            100% {
+                transform: scale(1.05) translate(0, 0);
+            }
+        }
+        .animated-hero-image {
+            animation: hero-image-animation 30s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -407,9 +423,9 @@
                         </div>
                     </div>
                     <div class="lg:w-1/2 relative reveal" style="transition-delay: 200ms;">
-                        <div class="relative">
-                            <img src="https://i.imghippo.com/files/vWs6818rgg.jpg" alt="Ilustrasi digital futuristik seorang kreator konten sedang bekerja dengan antarmuka hologram AI dan berbagai tools kreatif yang mengambang di sekitarnya." class="rounded-3xl shadow-2xl border border-purple-500/20" />
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-3xl"></div>
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-purple-500/20">
+                            <img src="https://i.imghippo.com/files/vWs6818rgg.jpg" alt="Ilustrasi digital futuristik seorang kreator konten sedang bekerja dengan antarmuka hologram AI dan berbagai tools kreatif yang mengambang di sekitarnya." class="w-full h-full object-cover animated-hero-image" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                         </div>
                     </div>
                 </div>
@@ -987,3 +1003,4 @@
     </script>
 </body>
 </html>
+
