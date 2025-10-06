@@ -340,8 +340,8 @@
             }
         }
         
-        /* Hero Image Animation */
-        @keyframes hero-image-animation {
+        /* Modern Image Animation (Ken Burns Effect) */
+        @keyframes ken-burns-effect {
             0% {
                 transform: scale(1.05) translate(0, 0);
             }
@@ -352,8 +352,8 @@
                 transform: scale(1.05) translate(0, 0);
             }
         }
-        .animated-hero-image {
-            animation: hero-image-animation 30s ease-in-out infinite;
+        .animate-ken-burns {
+            animation: ken-burns-effect 30s ease-in-out infinite;
         }
     </style>
 </head>
@@ -424,7 +424,7 @@
                     </div>
                     <div class="lg:w-1/2 relative reveal" style="transition-delay: 200ms;">
                         <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-purple-500/20">
-                            <img src="https://i.imghippo.com/files/vWs6818rgg.jpg" alt="Ilustrasi digital futuristik seorang kreator konten sedang bekerja dengan antarmuka hologram AI dan berbagai tools kreatif yang mengambang di sekitarnya." class="w-full h-full object-cover animated-hero-image" />
+                            <img src="https://i.imghippo.com/files/vWs6818rgg.jpg" alt="Ilustrasi digital futuristik seorang kreator konten sedang bekerja dengan antarmuka hologram AI dan berbagai tools kreatif yang mengambang di sekitarnya." class="w-full h-full object-cover animate-ken-burns" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                         </div>
                     </div>
@@ -505,56 +505,56 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="glass-card rounded-3xl p-6 reveal">
                         <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
-                            <img src="https://i.imghippo.com/files/gjn6259zIc.jpg" alt="Halaman login Uranus Studio" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <img src="https://i.imghippo.com/files/gjn6259zIc.jpg" alt="Halaman login Uranus Studio" class="w-full h-auto object-cover transition-transform duration-500 animate-ken-burns" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                             <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
                         </div>
                         <h3 class="text-lg font-bold text-white text-center">Halaman Login Uranus Studio</h3>
                     </div>
                     <div class="glass-card rounded-3xl p-6 reveal" style="transition-delay: 100ms;">
                         <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
-                            <img src="https://i.imghippo.com/files/CmEC4197hg.png" alt="Analisis Gambar dan pembuatan karakter" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <img src="https://i.imghippo.com/files/CmEC4197hg.png" alt="Analisis Gambar dan pembuatan karakter" class="w-full h-auto object-cover transition-transform duration-500 animate-ken-burns" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                             <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
                         </div>
                         <h3 class="text-lg font-bold text-white text-center">Analisis & Kreasi Aset (Bagian 1)</h3>
                     </div>
                     <div class="glass-card rounded-3xl p-6 reveal" style="transition-delay: 200ms;">
                         <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
-                            <img src="https://i.imghippo.com/files/BRXE1989k.png" alt="Detail Adegan Anime dan Video" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <img src="https://i.imghippo.com/files/BRXE1989k.png" alt="Detail Adegan Anime dan Video" class="w-full h-auto object-cover transition-transform duration-500 animate-ken-burns" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                             <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
                         </div>
                         <h3 class="text-lg font-bold text-white text-center">Analisis & Kreasi Aset (Bagian 2)</h3>
                     </div>
                     <div class="glass-card rounded-3xl p-6 reveal" style="transition-delay: 300ms;">
                         <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
-                            <img src="https://i.imghippo.com/files/on1730YDQ.jpg" alt="Generator Mentahan Gambar" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <img src="https://i.imghippo.com/files/on1730YDQ.jpg" alt="Generator Mentahan Gambar" class="w-full h-auto object-cover transition-transform duration-500 animate-ken-burns" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                             <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
                         </div>
                         <h3 class="text-lg font-bold text-white text-center">Generator Mentahan Gambar</h3>
                     </div>
                     <div class="glass-card rounded-3xl p-6 reveal" style="transition-delay: 400ms;">
                         <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
-                            <img src="https://i.imghippo.com/files/qoK4769xmM.jpg" alt="Generator Hashtag Viral" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <img src="https://i.imghippo.com/files/qoK4769xmM.jpg" alt="Generator Hashtag Viral" class="w-full h-auto object-cover transition-transform duration-500 animate-ken-burns" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                             <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
                         </div>
                         <h3 class="text-lg font-bold text-white text-center">Generator Hashtag Viral</h3>
                     </div>
                     <div class="glass-card rounded-3xl p-6 reveal" style="transition-delay: 500ms;">
                         <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
-                            <img src="https://i.imghippo.com/files/exj8512kxk.jpg" alt="Generator Ide Konten Viral" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <img src="https://i.imghippo.com/files/exj8512kxk.jpg" alt="Generator Ide Konten Viral" class="w-full h-auto object-cover transition-transform duration-500 animate-ken-burns" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                             <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
                         </div>
                         <h3 class="text-lg font-bold text-white text-center">Generator Ide Konten Viral</h3>
                     </div>
                     <div class="glass-card rounded-3xl p-6 reveal" style="transition-delay: 600ms;">
                         <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
-                            <img src="https://i.imghippo.com/files/CnH1204o.jpg" alt="Generator Kata Kata Viral" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <img src="https://i.imghippo.com/files/CnH1204o.jpg" alt="Generator Kata Kata Viral" class="w-full h-auto object-cover transition-transform duration-500 animate-ken-burns" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                             <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
                         </div>
                         <h3 class="text-lg font-bold text-white text-center">Generator Kata-Kata Viral</h3>
                     </div>
                     <div class="glass-card rounded-3xl p-6 reveal" style="transition-delay: 700ms;">
                         <div class="overflow-hidden rounded-2xl mb-4 border border-purple-500/20">
-                            <img src="https://i.imghippo.com/files/RvDz4646Ic.jpg" alt="Analisis Video Lengkap" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <img src="https://i.imghippo.com/files/RvDz4646Ic.jpg" alt="Analisis Video Lengkap" class="w-full h-auto object-cover transition-transform duration-500 animate-ken-burns" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                             <div class="hidden text-center p-4 border border-dashed border-gray-600 rounded-lg">Gambar gagal dimuat.</div>
                         </div>
                         <h3 class="text-lg font-bold text-white text-center">Analisis Video Lengkap</h3>
@@ -572,8 +572,8 @@
                 
                 <div class="flex flex-col lg:flex-row gap-12 items-center">
                     <div class="lg:w-1/2 reveal">
-                        <div class="relative">
-                            <img src="https://i.imghippo.com/files/hPF8621Ro.jpg" alt="Antarmuka dashboard Uranus Studio yang modern dan gelap, menunjukkan berbagai tools analisis dan statistik konten dengan desain minimalis dan futuristik." class="rounded-3xl shadow-2xl border border-purple-500/20" />
+                        <div class="relative rounded-3xl overflow-hidden">
+                            <img src="https://i.imghippo.com/files/hPF8621Ro.jpg" alt="Antarmuka dashboard Uranus Studio yang modern dan gelap, menunjukkan berbagai tools analisis dan statistik konten dengan desain minimalis dan futuristik." class="w-full h-auto shadow-2xl border border-purple-500/20 animate-ken-burns" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-3xl"></div>
                         </div>
                     </div>
