@@ -224,31 +224,31 @@
             left: 25px;
             padding: 8px 15px;
             min-width: 212px;
-            background: rgba(10, 25, 40, 0.85);
-            color: rgba(230, 255, 255, 0.95);
+            background: rgba(17, 17, 27, 0.7);
+            color: rgba(226, 232, 240, 0.95);
             font-family: 'Roboto Mono', monospace;
             font-weight: 500;
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(127, 255, 212, 0.3);
+            border: 1px solid rgba(147, 51, 234, 0.3);
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
-            z-index: 9999;
+            box-shadow: 0 0 15px rgba(147, 51, 234, 0.2);
+            z-index: 10001;
             cursor: pointer;
             user-select: none;
             overflow: hidden;
             opacity: 0;
             animation: slideUpFadeIn 1s ease-out 0.5s forwards;
             transition: all 0.3s ease;
-            --glow-color: hsl(186, 100%, 50%);
-            --particle-base-hue: 186;
+            --glow-color: hsl(262, 90%, 65%);
+            --particle-base-hue: 262;
             --particle-base-lightness: 60;
         }
         
         #futuristic-watermark:hover {
             transform: translateY(-5px) scale(1.03);
-            border-color: rgba(127, 255, 212, 0.8);
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+            border-color: rgba(147, 51, 234, 0.7);
+            box-shadow: 0 0 25px rgba(147, 51, 234, 0.4);
         }
 
         #futuristic-watermark.light-mode {
@@ -352,12 +352,13 @@
     <div class="content-wrapper">
         <nav class="fixed w-full z-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-20">
+                <!-- Change: Removed justify-between and added ml-auto to menu elements -->
+                <div class="flex items-center h-20">
                     <div class="flex items-center gap-3">
                         <i class="fa-solid fa-meteor text-purple-400 text-2xl"></i>
                         <span class="text-2xl font-bold gradient-text">URANUS STUDIO</span>
                     </div>
-                    <div class="hidden md:flex items-center space-x-1">
+                    <div class="hidden md:flex items-center space-x-1 ml-auto">
                         <a href="#beranda" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Beranda</a>
                         <a href="#layanan" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Layanan</a>
                         <a href="#galeri" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Galeri</a>
@@ -365,7 +366,7 @@
                         <a href="#testimoni" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Testimoni</a>
                         <a href="#faq" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">FAQ</a>
                     </div>
-                    <button type="button" id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5">
+                    <button type="button" id="mobile-menu-button" class="md:hidden ml-auto inline-flex items-center justify-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5">
                         <i id="mobile-menu-icon" class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
